@@ -1,0 +1,68 @@
+default partial alphanumeric_keys
+xkb_symbols "basic" {
+
+    key <AE01> { [ 1, 1, 1 ] };
+    key <AE02> { [ 2, 2, 2 ] };
+    key <AE03> { [ 3, 3, 3 ] };
+    key <AE04> { [ 4, 4, 4 ] };
+    key <AE05> { [ 5, 5, 5 ] };
+    key <AE06> { [ 6, 6, 6 ] };
+    key <AE07> { [ 7, 7, 7 ] };
+    key <AE08> { [ 8, 8, 8 ] };
+    key <AE09> { [ 9, 9, 9 ] };
+    key <AE10> { [ 0, 0, 0 ] };
+
+    key <AD01> { [ q, Q, braceleft, Greek_OMEGA ] };
+    key <AD02> { [ w, W, braceright ] };
+    key <AD03> { [ e, E, bracketleft ] };
+    key <AD04> { [ r, R, bracketright ] };
+    key <AD05> { [ t, T, less ] };
+    key <AD06> { [ y, Y, greater ] };
+    key <AD07> { [ u, U, asterisk ] };
+    key <AD08> { [ i, I, plus ] };
+    key <AD09> { [ o, O, ampersand, Greek_sigma] };
+    key <AD10> { [ p, P, bar, Greek_pi ] };
+    key <AD11> { [ egrave, eacute, igrave ] };
+    key <AD12> { [ ograve] };
+
+    key <AC01> { [ a, A, parenleft ] };
+    key <AC02> { [ s, S, parenright, Greek_SIGMA ] };
+    key <AC03> { [ d, D, equal, Greek_DELTA ] };
+    key <AC04> { [ f, F, exclam ] };
+    key <AC05> { [ g, G, question ] };
+    key <AC06> { [ h, H ] };
+    key <AC07> { [ j, J ] };
+    key <AC08> { [ k, K ] };
+    key <AC09> { [ l, L ] };
+    key <AC10> { [ slash, asciitilde, backslash ] };
+    key <AC11> { [ agrave, degree ] };
+
+    key <AB01> { [ z, Z, asciicircum ] };
+    key <AB02> { [ x, X, numbersign ] };
+    key <AB03> { [ c, C, at ] };
+    key <AB04> { [ v, V, dollar, EuroSign ] };
+    key <AB05> { [ b, B, percent ] };
+    key <AB06> { [ n, N, apostrophe, grave ] };
+    key <AB07> { [ m, M, quotedbl, mu ] };
+    key <AB08> { [ comma, comma, semicolon ] };
+    key <AB09> { [ period, periodcentered, colon ] };
+    key <AB10> { [ minus, minus, underscore ] };
+
+    key <BKSL> { [ ugrave ] };
+    key <TLDE> { [ Caps_Lock ] };         // Italian keyboard \ key -> Caps Lock
+
+    // Modifier key remappings
+    key <LCTL> { [ Tab, ISO_Left_Tab ] }; // Left Control -> Tab
+    key <CAPS> { [ Control_L ] };         // Caps Lock -> Left Control
+    key <TAB>  { [ Escape ] };            // Tab -> Escape
+
+    replace key <LVL3> { type[Group1] = "ONE_LEVEL", symbols[Group1] = [ ISO_Level3_Shift ] };		
+
+    key <LALT> {
+      type[Group1]="ONE_LEVEL",
+      symbols[Group1] = [ ISO_Level3_Shift ]
+    };
+    
+    modifier_map Mod5    { <LVL3> };
+    modifier_map Control { <CAPS> };
+};

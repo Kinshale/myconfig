@@ -1,12 +1,11 @@
-return { -- Collection of various small independent plugins/modules
+-- A collection of various small independent plugins/modules
+
+return {
 	"echasnovski/mini.nvim",
 	config = function()
-		-- Better Around/Inside textobjects
-		--
-		-- Examples:
+		-- Better Around/Inside textobjects:
 		--  - va)  - [V]isually select [A]round [)]paren
 		--  - yinq - [Y]ank [I]nside [N]ext [Q]uote
-		--  - ci'  - [C]hange [I]nside [']quote
 		require("mini.ai").setup({ n_lines = 500 })
 
 		-- Add/delete/replace surroundings (brackets, quotes, etc.)

@@ -1,3 +1,5 @@
+# NOTE: Conda lazy loading.
+
 function conda_boot --description "Lazy-load and activate base Conda environment"
     # Remove this function after first call
     functions --erase conda_boot

@@ -45,6 +45,7 @@ return {
 		spec = {
 			{ "<leader>c", group = "[C]ode", mode = { "n", "x" } },
 			{ "<leader>d", group = "[D]ocument" }, --NOTE: Maybe add document symbols variables, document symbols functions ...
+			{ "<leader>p", group = "[P]ersisted" },
 			{ "<leader>r", group = "[R]ename" }, --FIXME: What's the purpose of this?
 			{ "<leader>s", group = "[S]earch" },
 			{ "<leader>w", group = "[W]orkspace" },

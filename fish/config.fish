@@ -23,6 +23,7 @@ if status is-interactive
     # Editor/utility shortcuts
     alias v="nvim"
     alias t="tmux"
+    alias mm="micromamba"
 
 end
 
@@ -39,3 +40,10 @@ end
 #end
 ## <<< conda initialize <<<
 #
+
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'micromamba shell init' !!
+# set -gx MAMBA_EXE "/home/ale/.local/bin/micromamba"
+# set -gx MAMBA_ROOT_PREFIX "/home/ale/micromamba"
+# $MAMBA_EXE shell hook --shell fish --root-prefix $MAMBA_ROOT_PREFIX | source
+# <<< mamba initialize <<<

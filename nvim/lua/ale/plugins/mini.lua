@@ -9,14 +9,22 @@ return {
 		require("mini.ai").setup({ n_lines = 500 })
 
 		-- Add/delete/replace surroundings (brackets, quotes, etc.)
-		--
+		-- Note: you need to be fast ...
 		-- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
 		-- - sd'   - [S]urround [D]elete [']quotes
-		-- - sr)'  - [S]urround [R]eplace [)] [']
+		-- - sr)'  - [S]urround [R]eplace [)] []
 		require("mini.surround").setup()
 
+		-- It lets you align text interactively comments, asssignmnts, tables, CSV like data ...
+		--  - ga → align with a prompt (you type the delimiter or regex).
+		--  - gA → same, but align with preview and more advanced options.
+		require("mini.align").setup()
+
+		-- Lets you move lines and selected text via Alt + hjkl.
+		require("mini.move").setup()
+
 		-- Simple and easy statusline.
-		--  You could remove this setup call if you don't like it,
+		--  You could remove this setup call if you dont like it,
 		--  and try some other statusline plugin
 		local statusline = require("mini.statusline")
 		-- set use_icons to true if you have a Nerd Font

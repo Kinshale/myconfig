@@ -1,41 +1,42 @@
 default partial alphanumeric_keys
 xkb_symbols "basic" {
 
-    key <AE01> { [ 1, 1, 1 ] };
-    key <AE02> { [ 2, 2, 2 ] };
-    key <AE03> { [ 3, 3, 3 ] };
-    key <AE04> { [ 4, 4, 4 ] };
-    key <AE05> { [ 5, 5, 5 ] };
-    key <AE06> { [ 6, 6, 6 ] };
-    key <AE07> { [ 7, 7, 7 ] };
-    key <AE08> { [ 8, 8, 8 ] };
-    key <AE09> { [ 9, 9, 9 ] };
-    key <AE10> { [ 0, 0, 0 ] };
+    key <AE01> { [ 1, exclam ] };
+    key <AE02> { [ 2, at ] };
+    key <AE03> { [ 3, numbersign ] };
+    key <AE04> { [ 4, dollar ] };
+    key <AE05> { [ 5, percent ] };
+    key <AE06> { [ 6, asciicircum ] };
+    key <AE07> { [ 7, ampersand ] };
+    key <AE08> { [ 8, asterisk ] };
+    key <AE09> { [ 9, parenleft ] };
+    key <AE10> { [ 0, parenright ] };
 
     key <AD01> { [ q, Q, braceleft, Greek_OMEGA ] };
     key <AD02> { [ w, W, braceright ] };
-    key <AD03> { [ e, E, bracketleft ] };
-    key <AD04> { [ r, R, bracketright ] };
-    key <AD05> { [ t, T, less ] };
-    key <AD06> { [ y, Y, greater ] };
-    key <AD07> { [ u, U, asterisk ] };
-    key <AD08> { [ i, I, plus ] };
-    key <AD09> { [ o, O, ampersand, Greek_sigma] };
-    key <AD10> { [ p, P, bar, Greek_pi ] };
-    key <AD11> { [ egrave, eacute, igrave ] };
-    key <AD12> { [ ograve] };
+    key <AD03> { [ e, E, exclam ] };
+    key <AD04> { [ r, R, question ] };
+    key <AD05> { [ t, T, bar ] };
+    key <AD06> { [ y, Y, ampersand ] };
+    key <AD07> { [ u, U, asterisk, ugrave ] };
+    key <AD08> { [ i, I, plus, igrave ] };
+    key <AD09> { [ o, O, less, ograve] };
+    key <AD10> { [ p, P, greater, Greek_pi ] };
+    key <AD11> { [ bracketleft, braceleft ] };
+    key <AD12> { [ bracketright, braceright ] };
 
-    key <AC01> { [ a, A, parenleft ] };
-    key <AC02> { [ s, S, parenright, Greek_SIGMA ] };
-    key <AC03> { [ d, D, equal, Greek_DELTA ] };
-    key <AC04> { [ f, F, exclam ] };
-    key <AC05> { [ g, G, question ] };
+
+    key <AC01> { [ a, A, parenleft, agrave ] };
+    key <AC02> { [ s, S, parenright ] };
+    key <AC03> { [ d, D, bracketleft, Greek_DELTA ] };
+    key <AC04> { [ f, F, bracketright ] };
+    key <AC05> { [ g, G, equal ] };
     key <AC06> { [ h, H ] };
     key <AC07> { [ j, J ] };
     key <AC08> { [ k, K ] };
     key <AC09> { [ l, L ] };
     key <AC10> { [ slash, asciitilde, backslash ] };
-    key <AC11> { [ agrave, degree ] };
+    key <AC11> { [ egrave, eacute, degree] };
 
     key <AB01> { [ z, Z, asciicircum ] };
     key <AB02> { [ x, X, numbersign ] };
@@ -43,13 +44,13 @@ xkb_symbols "basic" {
     key <AB04> { [ v, V, dollar, EuroSign ] };
     key <AB05> { [ b, B, percent ] };
     key <AB06> { [ n, N, apostrophe, grave ] };
-    key <AB07> { [ m, M, quotedbl, mu ] };
+    key <AB07> { [ m, M, quotedbl ] };
     key <AB08> { [ comma, comma, semicolon ] };
     key <AB09> { [ period, periodcentered, colon ] };
     key <AB10> { [ minus, minus, underscore ] };
 
-    key <BKSL> { [ ugrave ] };
-    key <TLDE> { [ Caps_Lock ] };         // Italian keyboard \ key -> Caps Lock
+    key <BKSL> { [backslash] };
+    key <TLDE> { [Caps_Lock] };         // Italian keyboard \ key -> Caps Lock
 
     // Modifier key remappings
     key <LCTL> { [ Tab, ISO_Left_Tab ] }; // Left Control -> Tab

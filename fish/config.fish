@@ -10,20 +10,43 @@ if status is-interactive
     set fish_cursor_replace_one underscore
     set fish_cursor_visual      block
 
-    function fish_user_key_bindings
-        fish_default_key_bindings -M insert
-        fish_vi_key_bindings --no-erase insert
+	# ls after cd
+	functions --copy cd _cd
+	function cd; _cd $argv && ls; end
 
-        bind -e \cv  # Erase existing Ctrl+V binding
-        bind -M insert \cv 'fish_clipboard_paste'  # Ctrl+V in insert mode
-        bind -M default \cv 'fish_clipboard_paste' # Ctrl+V in normal mode
+	set -g fish_key_bindings fish_vi_key_bindings
 
-    end
+	# ctrl-n as tab
+    bind -e \cn
+	bind --mode default \cn complete
+	bind --mode insert  \cn complete
+	bind --mode visual  \cn complete
+	# ctrl-p as shift-tab
+    bind -e \cp
+	bind --mode default \cp complete-and-search
+	bind --mode insert  \cp complete-and-search
+	bind --mode visual  \cp complete-and-search
+	# ctrl-y for accepting them
+    bind -e \cy
+	bind --mode default \cy accept-autosuggestion
+	bind --mode insert  \cy accept-autosuggestion
 
     # Editor/utility shortcuts
     alias v="nvim"
     alias t="tmux"
     alias mm="micromamba"
+    
+    if type -q eza 
+        alias ls='eza --icons --group-directories-first'
+        alias exa='eza --icons --group-directories-first'
+        alias tree='eza --icons --group-directories-first --tree'
+    end
+
+
+    # Use fzf for reverse search instead of redo
+    if type -q __fzf_reverse_isearch
+        bind \cr __fzf_reverse_isearch
+    end
 
 end
 

@@ -1,5 +1,5 @@
 keycode  30 = u U BackSpace BackSpace asterisk NoSymbol
-keycode  32 = o O Delete Delete ampersand Greek_sigma
+keycode  32 = o O Delete Delete less ograve
 keycode  43 = h H Left Left
 keycode  44 = j J Down Down
 keycode  45 = k K Up Up 

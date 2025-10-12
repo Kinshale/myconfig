@@ -26,3 +26,20 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 -- s by default deletes a character and enters insert mode
 vim.keymap.set("n", "s", "<Nop>")
 vim.keymap.set("x", "s", "<Nop>")
+
+-- spell shortcuts
+vim.keymap.set(
+	"n",
+	"<leader>tsi",
+	"<cmd>set spell<cr><cmd>set spelllang=en_us,it<cr>",
+	{ desc = "[t]oggle [s]pell [i]t & en_us" }
+)
+vim.keymap.set(
+	"n",
+	"<leader>tsu",
+	"<cmd>set spell<cr><cmd>set spelllang=en_us<cr>",
+	{ desc = "[t]oggle [s]pell en_[u]s" }
+)
+vim.keymap.set("n", "<leader>tsn", "<cmd>set nospell<cr>", { desc = "[t]oggle [s]pell [n]o" })
+vim.keymap.set("i", "<c-s>", "<esc>[s1z=`]a", { desc = "[s]pell correct" }) -- Correct the previous mispelled word and returns in position
+vim.keymap.set("n", "<c-s>", "1z=", { desc = "[s]pell correct" })

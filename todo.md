@@ -1,5 +1,6 @@
 # TODO LIST
-1. Le varie éòàù generiamole da alt. Lasciamo i tasti americani per la configurazione. 
+1. CTRL + R e fuzzy finding figo. 
 2. Il touchpad
-6. Il grande mistero di tmux. 
-4. Yazi è inutile
+3. Il grande mistero di tmux. 
+4. Yazi va imparato
+

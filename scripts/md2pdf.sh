@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Root of your Organ folder
-BASE_DIR="$HOME/Documents/organ"
+BASE_DIR="$HOME/Documents/scrivere"
 
 # 1. Pick a Markdown file
 MD_FILE=$(find "$BASE_DIR" -type f -name "*.md" | fzf --prompt="Select a Markdown file: ")

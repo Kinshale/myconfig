@@ -1,0 +1,24 @@
+name: ml # Machile Learning
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pandas
+  - numpy
+  - matplotlib
+  - seaborn
+  - scikit-learn # Traditional ml algorithm (classification, regression, clustering)
+  - nltk # Natural language toolkit
+  - tqdm # Progress bar for long-running processes
+  - requests
+  - kaggle  # Kaggle API
+  # - jupyterlab
+  - ipykernel
+  - pip
+  - pip:
+      - textblob
+      - wordcloud
+      - transformers # Pre-trained transformer models (BERT, GPT, etc ..)
+      - datasets
+      - torch # Deep learning framework (PyTorch)
+      - evaluate

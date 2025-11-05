@@ -1,4 +1,4 @@
-keycode  30 = u U BackSpace BackSpace asterisk NoSymbol
+keycode  30 = u U BackSpace BackSpace asterisk ugrave
 keycode  32 = o O Delete Delete less ograve
 keycode  43 = h H Left Left
 keycode  44 = j J Down Down

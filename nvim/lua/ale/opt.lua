@@ -16,7 +16,7 @@ end)
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 vim.opt.tabstop = 4
-vim.opt.expandtab = true
+vim.opt.expandtab = false
 
 vim.opt.smartindent = true
 vim.opt.wrap = true
@@ -50,3 +50,14 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 
 vim.opt.spell = false
+vim.keymap.set(
+	"n",
+	"<leader>ti",
+	"<cmd>set spell<cr><cmd>set spelllang=en_us,it<cr>",
+	{ desc = "[t]oggle spell [i]t & en_us" }
+)
+vim.keymap.set("n", "<leader>tu", "<cmd>set spell<cr><cmd>set spelllang=en_us<cr>", { desc = "[t]oggle spell en_[u]s" })
+vim.keymap.set("n", "<leader>tn", "<cmd>set nospell<cr>", { desc = "[t]oggle [n]o spell" })
+vim.opt.spelllang = "en_gb"
+vim.keymap.set("i", "<c-s>", "<esc>[s1z=`]a", { desc = "[s]pell correct" })
+vim.keymap.set("n", "<c-s>", "[s1z=", { desc = "[s]pell correct" })

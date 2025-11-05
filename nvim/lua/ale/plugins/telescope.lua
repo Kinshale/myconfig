@@ -55,20 +55,19 @@ return {
 			builtin.live_grep()
 		end, { desc = "[S]earch [G]rep (all files)" })
 
-		vim.keymap.set("n", "<leader>/", function()
+		vim.keymap.set("n", "<leader>b/", function()
 			builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 				winblend = 10,
 				previewer = false,
 			}))
-		end, { desc = "[/] Fuzzy (current buffer)" })
+		end, { desc = "[B]uffer [/] fuzzy" })
 
-		-- vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch [W]ord" })
-		-- vim.keymap.set("n", "<leader>s/", function()
-		-- 	builtin.live_grep({
-		-- 		grep_open_files = true,
-		-- 		prompt_title = "Live Grep in Open Files",
-		-- 	})
-		-- end, { desc = "[S]earch [/] in Open Files" })
+		vim.keymap.set("n", "<leader>w/", function()
+			builtin.live_grep({
+				grep_open_files = true,
+				prompt_title = "Live Grep in Open Files",
+			})
+		end, { desc = "[W]orkspace [/] find" })
 		--
 		-- vim.keymap.set("n", "<leader>sn", function()
 		-- 	builtin.find_files({ cwd = vim.fn.stdpath("config") })

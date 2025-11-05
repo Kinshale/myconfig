@@ -3,6 +3,8 @@ if not vim.g.vscode then
 	return
 end
 
+vim.o.clipboard = "unnamedplus"
+
 vim.api.nvim_create_autocmd("textyankpost", {
 	pattern = "*",
 	callback = function()
@@ -20,46 +22,42 @@ vim.g.mapleader = " "
 local opts = { noremap = true, silent = true }
 local vscode = require("vscode")
 
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+
+-- Map <C-y> to accept current suggestion in VSCode
+-- FIX: Doesn't work
+-- vim.keymap.set("i", "<C-y>", function()
+-- 	vscode.action("acceptSelectedSuggestion")
+-- end, opts)
+
+-- s by default deletes a character and enters insert mode
+vim.keymap.set("n", "s", "<Nop>")
+vim.keymap.set("x", "s", "<Nop>")
+
+-- Swallow problematic Ctrl + hjkl combos in normal mode
+vim.keymap.set("n", "<C-h>", "<Nop>", opts)
+vim.keymap.set("n", "<C-j>", "<Nop>", opts)
+vim.keymap.set("n", "<C-k>", "<Nop>", opts)
+vim.keymap.set("n", "<C-l>", "<Nop>", opts)
+
 -- HACK: 🧩 Enabling / navigating major panels
-vim.keymap.set("n", "<leader>e", function() -- Explorer view
-	vscode.call("workbench.view.explorer")
-end, opts)
+local panels_mappings = {
+	e = "workbench.view.explorer",
+	o = "outline.focus",
+	g = "workbench.view.scm",
+	d = "workbench.view.debug",
+	x = "workbench.view.extensions",
+	z = "workbench.action.toggleZenMode",
+}
 
-vim.keymap.set("n", "<leader>g", function() -- Git / Source Control view
-	vscode.call("workbench.view.scm")
-end, opts)
-
-vim.keymap.set("n", "<leader>d", function() -- Debug view
-	vscode.call("workbench.view.debug")
-end, opts)
-
-vim.keymap.set("n", "<leader>x", function() -- Extensions view
-	vscode.call("workbench.view.extensions")
-end, opts)
-
-vim.keymap.set("n", "<leader>p", function() -- Command palette
-	vscode.call("workbench.action.showCommands")
-end, opts)
-
--- HACK: 🧭 Toggling stuff
-vim.keymap.set("n", "<leader>tb", function() -- Toggle sidebar
-	vscode.call("workbench.action.toggleSidebarVisibility")
-end, opts)
-
-vim.keymap.set("n", "<leader>tj", function() -- Toggle panel (terminal/output/debug)
-	vscode.call("workbench.action.togglePanel")
-end, opts)
-
-vim.keymap.set("n", "<leader>tz", function() -- Toggle Zen mode
-	vscode.call("workbench.action.toggleZenMode")
-end, opts)
-
-vim.keymap.set("n", "<leader>tn", function() -- Toggle minimap (added extra example)
-	vscode.call("editor.action.toggleMinimap")
-end, opts)
+for key, command in pairs(panels_mappings) do
+	vim.keymap.set({ "n", "v" }, "<leader>" .. key, function()
+		vscode.call(command)
+	end, opts)
+end
 
 -- HACK: 🔍 Searching stuff
-vim.keymap.set("n", "<leader>so", function() -- Search open files (Quick Open)
+vim.keymap.set("n", "<leader>sf", function() -- Search files (Quick Open)
 	vscode.call("workbench.action.quickOpen")
 end, opts)
 
@@ -67,7 +65,11 @@ vim.keymap.set("n", "<leader>sg", function() -- Search by grep (global search)
 	vscode.call("workbench.action.findInFiles")
 end, opts)
 
-vim.keymap.set("n", "<leader>ss", function() -- Search workspace symbols
+vim.keymap.set("n", "<leader>ss", function() -- Search symbols (Go to Symbol in File)
+	vscode.call("workbench.action.gotoSymbol")
+end, opts)
+
+vim.keymap.set("n", "<leader>sw", function() -- Search workspace symbols
 	vscode.call("workbench.action.showAllSymbols")
 end, opts)
 

@@ -1,8 +1,12 @@
--- NOTE: LSP Plugins
+-- TITLE: LSP Plugins
 -- + neovim/nvim-lspconfig: The main plugin for configuring LSP servers.
 -- + williamboman/mason.nvim: A GUI for managing LSP servers, linters, formatters, etc.
 -- + hrsh7th/nvim-cmp: Completion engine with firendly-snippets as a dependency.
 -- + Other plugins for gluing them toghether
+
+-- IDEA:
+-- LSPs auto-attach because of your mason-lspconfig config block. So once you download a Language Server with Mason you're fine.
+-- Formatters and Linters (e.g. Prettier, Black, Stylua, etc.) require explicit mapping in plugins/format.lua.
 
 return {
 	{
@@ -30,21 +34,24 @@ return {
 					end
 
 					map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
+					map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 					map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-					map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
+					map("gi", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
+
+					-- NOTE: Buffer action
+					map("<leader>bs", require("telescope.builtin").lsp_document_symbols, "[B]uffer [S]ymbols")
+					map("<leader>br", vim.lsp.buf.rename, "[B]uffer [R]ename")
+					-- There is also the buffer fuzzy find <leader>b/
+
+					-- NOTE: Workspace action
 					map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
-					map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
 					map(
 						"<leader>ws",
 						require("telescope.builtin").lsp_dynamic_workspace_symbols,
 						"[W]orkspace [S]ymbols"
 					)
-					map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-					map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
 
-					-- WARN: This is not Goto Definition, this is Goto Declaration.
-					--  For example, in C this would take you to the header.
-					map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+					map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
 
 					--    See `:help CursorHold` for information about when this is executed
 					local client = vim.lsp.get_client_by_id(event.data.client_id)

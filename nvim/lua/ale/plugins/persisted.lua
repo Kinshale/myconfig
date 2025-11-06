@@ -1,4 +1,4 @@
--- NOTE: The sessions are stored at ~/.local/share/nvim/sessions/
+-- LINK: The sessions are stored at ~/.local/share/nvim/sessions/
 
 return {
 	"olimorris/persisted.nvim",
@@ -21,11 +21,11 @@ return {
 			},
 		})
 
-		vim.keymap.set("n", "<leader>ps", "<cmd>SessionSave<CR>", { desc = "[S]ave session" })
+		vim.keymap.set("n", "<leader>wpd", "<cmd>SessionDelete<CR>", { desc = "[P]ersisted [D]elete session" })
 
-		-- NOTE: Kind of useless if autosave and autoload are enabled
-		vim.keymap.set("n", "<leader>pl", "<cmd>SessionLoad<CR>", { desc = "[L]oad session" })
-		vim.keymap.set("n", "<leader>pd", "<cmd>SessionDelete<CR>", { desc = "[D]elete session" })
+		-- DOUBT: Kind of useless if autosave and autoload are enabled
+		vim.keymap.set("n", "<leader>wpl", "<cmd>SessionLoad<CR>", { desc = "[P]ersisted [L]oad session" })
+		vim.keymap.set("n", "<leader>wps", "<cmd>SessionSave<CR>", { desc = "[P]ersisted [S]ave session" })
 
 		vim.keymap.set("n", "<leader>ss", "<cmd>Telescope persisted<CR>", { desc = "[S]earch [S]essions" })
 

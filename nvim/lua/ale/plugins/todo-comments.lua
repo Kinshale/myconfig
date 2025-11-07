@@ -50,7 +50,7 @@ return {
 			header = { "#7dcfff" }, -- Kept your original, it's a good bright blue
 			subheader = { "#7aa2f7" }, -- A softer, distinctive purple
 			link = { "#00B7FF" },
-			note = { "#9ece6a" }, -- A brighter, more vibrant green
+			note = { "#8fb573" }, -- A brighter, more vibrant green
 			idea = { "#2ac3de" }, -- Your original "idea" cyan, now for "subheader"
 			todo = { "#bb9af7" }, -- Your original "todo" purple, now for "idea"
 			doubt = { "#ff9e64" }, -- Vibrant orange
@@ -61,8 +61,8 @@ return {
 		-- TITLE:
 		-- CHAPTER:
 		-- LINK:
-		-- NOTE:
 		-- IDEA:
+		-- NOTE:
 		-- TODO:
 		-- DOUBT:
 		-- ERROR:

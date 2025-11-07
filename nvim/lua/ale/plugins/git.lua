@@ -10,6 +10,14 @@ return {
 				changedelete = { text = "~" },
 			},
 		},
+		config = function(_, opts)
+			require("gitsigns").setup(opts)
+
+			-- Add toggle keymap
+			vim.keymap.set("n", "<leader>tg", function()
+				require("gitsigns").toggle_signs()
+			end, { desc = "[T]oggle [G]it signs" })
+		end,
 	},
 	-- {
 	-- 	"tpope/vim-fugitive",

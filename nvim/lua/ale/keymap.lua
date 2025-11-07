@@ -8,21 +8,31 @@ vim.g.maplocalleader = " "
 --  See `:help hlsearch`
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
--- Diagnostic keymaps
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "[Q]uickfix" })
-
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "[Esc] terminal" })
 
--- Keybinds to make split navigation easier.
---  Use CTRL+<hjkl> to switch between windows
---
---  See `:help wincmd` for a list of all window commands
-vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+-- CHAPTER: Window management
 
+--  See `:help wincmd` for a list of all window commands
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to window left" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to window down" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to window up" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to window right" })
+
+-- Tab management
+vim.keymap.set("n", "<C-w>t", "<cmd>tabnew<CR>", { desc = "New tab" })
+vim.keymap.set("n", "<C-w>q", "<cmd>tabclose<CR>", { desc = "Close tab" })
+vim.keymap.set("n", "<C-w>o", "<cmd>tabonly<CR>", { desc = "Only tab (close others)" })
+
+vim.keymap.set("n", "<C-w>n", "<cmd>tabnext<CR>", { desc = "Next tab" })
+vim.keymap.set("n", "<C-w>p", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
+
+-- Window management
+vim.keymap.set("n", "<C-w>|", "<cmd>vsplit<CR>", { desc = "Split Vertically" })
+vim.keymap.set("n", "<C-w>-", "<cmd>split<CR>", { desc = "Split Horizontally" })
+vim.keymap.set("n", "<C-w>w", "<cmd>close<CR>", { desc = "Close Window" })
+
+-- CHAPTER: Spelling
 -- s by default deletes a character and enters insert mode
 vim.keymap.set("n", "s", "<Nop>")
 vim.keymap.set("x", "s", "<Nop>")

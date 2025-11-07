@@ -1,5 +1,6 @@
 return {
 	"lervag/vimtex",
+	lazy = false, -- NOTE: VimTeX is already lazy loaded by virtue
 	config = function()
 		vim.g.vimtex_view_method = "zathura"
 		vim.g.vimtex_compiler_method = "latexmk"

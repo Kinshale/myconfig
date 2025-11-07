@@ -27,7 +27,7 @@ return {
 		vim.keymap.set("n", "<leader>wpl", "<cmd>SessionLoad<CR>", { desc = "[P]ersisted [L]oad session" })
 		vim.keymap.set("n", "<leader>wps", "<cmd>SessionSave<CR>", { desc = "[P]ersisted [S]ave session" })
 
-		vim.keymap.set("n", "<leader>ss", "<cmd>Telescope persisted<CR>", { desc = "[S]earch [S]essions" })
+		vim.keymap.set("n", "<leader>wpf", "<cmd>Telescope persisted<CR>", { desc = "[P]ersisted [F]ind sessions" })
 
 		-- Commands while in Telescope persisted (Be careful to be in insert mode)
 		-- <CR> - Open/source the session file

@@ -25,35 +25,104 @@ return {
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 		},
 		config = function()
+			-- CHAPTER: Set up Mason and language servers (automatic installation).
+
+			local capabilities = vim.lsp.protocol.make_client_capabilities() -- Hover, autocompletion integration, definitions are basic capabilities.
+			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+
+			require("mason").setup()
+			require("mason-lspconfig").setup({
+				ensure_installed = { "clangd", "pyright", "lua_ls", "stylua" },
+				automatic_installation = true,
+				handlers = {
+					function(server_name)
+						require("lspconfig")[server_name].setup({ capabilities = capabilities })
+					end,
+				},
+			})
+
+			-- CHAPTER: Configuring Diagnostics.
+
+			vim.diagnostic.config({
+				signs = {
+					text = { Error = "", Info = "󰋽", Warn = "", Hint = "󱠃" },
+				},
+				virtual_text = true,
+				float = { border = "single" },
+				update_in_insert = false,
+				underline = true,
+				severity_sort = true,
+			})
+
+			-- -- Configure hover appearance
+			-- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+			-- 	border = "single",
+			-- })
+
+			-- CHAPTER: LSP keymaps
+
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 				callback = function(event)
+					local bufnr = event.buf
 					local map = function(keys, func, desc, mode)
 						mode = mode or "n"
-						vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+						vim.keymap.set(mode, keys, func, { buffer = bufnr, desc = desc })
 					end
 
-					map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
+					-- Basic navigation
+					map("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
 					map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-					map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-					map("gi", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
+					map("gt", vim.lsp.buf.type_definition, "[G]oto [T]ype definition") -- FIX: Conflicts with goto_next tab.
+					map("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
+					map("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
 
-					-- NOTE: Buffer action
+					-- Actions
+					map("<leader>ar", vim.lsp.buf.rename, "[R]ename")
+					map("<leader>af", vim.lsp.buf.format, "[F]ormat")
+					map("<leader>al", "<cmd>LspRestart<CR>", "Restart [L]sp")
+					map("<leader>ac", vim.lsp.buf.code_action, "[C]ode", { "n", "x" })
+
+					-- Buffer.
 					map("<leader>bs", require("telescope.builtin").lsp_document_symbols, "[B]uffer [S]ymbols")
-					map("<leader>br", vim.lsp.buf.rename, "[B]uffer [R]ename")
-					-- There is also the buffer fuzzy find <leader>b/
+					map("<leader>bd", require("telescope.builtin").diagnostics, "[B]uffer [D]iagnostics")
+					map("<leader>bq", vim.diagnostic.setqflist, "[Q]uickfix list")
 
-					-- NOTE: Workspace action
-					map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
+					-- Workspace
 					map(
 						"<leader>ws",
 						require("telescope.builtin").lsp_dynamic_workspace_symbols,
 						"[W]orkspace [S]ymbols"
 					)
 
-					map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
+					-- Toggling
+					map("<leader>td", function()
+						vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+					end, "[T]oggle [D]iagnostic")
 
-					--    See `:help CursorHold` for information about when this is executed
+					map("<leader>tl", function()
+						local clients = vim.lsp.get_clients({ bufnr = 0 })
+						if #clients > 0 then
+							vim.cmd("LspStop")
+							print("LSP stopped")
+						else
+							vim.cmd("LspStart")
+							print("LSP started")
+						end
+					end, "[T]oggle [L]sp")
+
+					-- Documentation
+					map("K", vim.lsp.buf.hover, "Hover Documentation")
+					map("H", vim.diagnostic.open_float, "Hover Diagnostic")
+
+					-- Diagnostic navigation
+					map("]d", vim.diagnostic.goto_next, "Next [D]iagnostic")
+					map("[d", vim.diagnostic.goto_prev, "Previous [D]iagnostic")
+
+					-- DOUBT: What's the purpose of this?
+					-- map("<leader>fr", require("telescope.builtin").lsp_references, "[F]ind [R]eferences")
+
+					-- CHAPTER: Document highlighting (when hovering a variable it highlights other occurences).
 					local client = vim.lsp.get_client_by_id(event.data.client_id)
 					if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
 						local highlight_augroup =
@@ -80,46 +149,10 @@ return {
 					end
 				end,
 			})
-
-			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
-
-			-- NOTE: Configure language servers. You can install them with mason, but they'll have the defualt options.
-			local servers = {
-				-- rust_analyzer = {},
-				lua_ls = {
-					settings = {
-						Lua = {
-							completion = {
-								callSnippet = "Replace",
-							},
-						},
-					},
-				},
-			}
-
-			local ensure_installed = vim.tbl_keys(servers or {})
-			vim.list_extend(ensure_installed, {
-				"stylua", -- Used to format Lua code
-			})
-			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
-
-			require("mason-lspconfig").setup({
-				ensure_installed = { "clangd", "pyright", "lua_ls" },
-				automatic_installation = true,
-				handlers = {
-					function(server_name)
-						local server = servers[server_name] or {}
-
-						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-						require("lspconfig")[server_name].setup(server)
-					end,
-				},
-			})
 		end,
 	},
 
-	{ -- NOTE: Autocompletion
+	{ -- CHAPTER: Autocompletion
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
 		dependencies = {

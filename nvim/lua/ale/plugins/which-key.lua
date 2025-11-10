@@ -43,12 +43,12 @@ return {
 
 		-- Document existing key chains
 		spec = {
-			{ "<leader>c", group = "[A]ctions" },
+			{ "<leader>a", group = "[A]ctions" },
 			{ "<leader>b", group = "[B]uffer" },
+			{ "<leader>l", group = "[L]atex" },
 			{ "<leader>s", group = "[S]earch" },
 			{ "<leader>t", group = "[T]oggle" },
 			{ "<leader>w", group = "[W]orkspace" },
-			-- { "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
 		},
 	},
 }

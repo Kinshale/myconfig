@@ -13,7 +13,10 @@ return {
 		-- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
 		-- - sd'   - [S]urround [D]elete [']quotes
 		-- - sr)'  - [S]urround [R]eplace [)] []
-		require("mini.surround").setup()
+		require("mini.surround").setup({
+			-- LINK: In after/ftplugin/tex.lua there are some custom surroundings.
+			custom_surrondings = {},
+		})
 
 		-- It lets you align text interactively comments, asssignmnts, tables, CSV like data ...
 		--  - ga → align with a prompt (you type the delimiter or regex).

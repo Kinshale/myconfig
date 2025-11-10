@@ -1,10 +1,10 @@
--- TITLE: LSP Plugins
+-- CHAPTER: LSP Plugins
 -- + neovim/nvim-lspconfig: The main plugin for configuring LSP servers.
 -- + williamboman/mason.nvim: A GUI for managing LSP servers, linters, formatters, etc.
 -- + hrsh7th/nvim-cmp: Completion engine with firendly-snippets as a dependency.
 -- + Other plugins for gluing them toghether
 
--- IDEA:
+-- NOTE:
 -- LSPs auto-attach because of your mason-lspconfig config block. So once you download a Language Server with Mason you're fine.
 -- Formatters and Linters (e.g. Prettier, Black, Stylua, etc.) require explicit mapping in plugins/format.lua.
 
@@ -25,8 +25,7 @@ return {
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 		},
 		config = function()
-			-- CHAPTER: Set up Mason and language servers (automatic installation).
-
+			-- SECTION: Set up Mason and language servers (automatic installation).
 			local capabilities = vim.lsp.protocol.make_client_capabilities() -- Hover, autocompletion integration, definitions are basic capabilities.
 			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
@@ -41,8 +40,7 @@ return {
 				},
 			})
 
-			-- CHAPTER: Configuring Diagnostics.
-
+			-- SECTION: Configuring Diagnostics.
 			vim.diagnostic.config({
 				signs = {
 					text = { Error = "", Info = "󰋽", Warn = "", Hint = "󱠃" },
@@ -59,8 +57,7 @@ return {
 			-- 	border = "single",
 			-- })
 
-			-- CHAPTER: LSP keymaps
-
+			-- SECTION: LSP keymaps
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 				callback = function(event)
@@ -73,7 +70,7 @@ return {
 					-- Basic navigation
 					map("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
 					map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-					map("gt", vim.lsp.buf.type_definition, "[G]oto [T]ype definition") -- FIX: Conflicts with goto_next tab.
+					-- map("gt", vim.lsp.buf.type_definition, "[G]oto [T]ype definition") -- FIX: Conflicts with goto_next tab.
 					map("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
 					map("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
 
@@ -122,7 +119,7 @@ return {
 					-- DOUBT: What's the purpose of this?
 					-- map("<leader>fr", require("telescope.builtin").lsp_references, "[F]ind [R]eferences")
 
-					-- CHAPTER: Document highlighting (when hovering a variable it highlights other occurences).
+					-- SECTION: Document highlighting (when hovering a variable it highlights other occurences).
 					local client = vim.lsp.get_client_by_id(event.data.client_id)
 					if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
 						local highlight_augroup =
@@ -152,7 +149,7 @@ return {
 		end,
 	},
 
-	{ -- CHAPTER: Autocompletion
+	{ -- SECTION: Autocompletion
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
 		dependencies = {

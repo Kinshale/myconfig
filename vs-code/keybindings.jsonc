@@ -1,0 +1,211 @@
+// LINK: .config/Code/User (Soft link)
+[
+	// NOTE: You can only chord 1 key. 
+	// ============================================
+	// CHAPTER: "Ctrl + space" for important stuff.
+	// ============================================
+	{
+		"key": "ctrl+space b",
+		"command": "workbench.action.toggleSidebarVisibility"
+	},
+	{
+		"key": "ctrl+b",
+		"command": "-workbench.action.toggleSidebarVisibility"
+	},
+	{
+		"key": "ctrl+space p",
+		"command": "workbench.action.showCommands"
+	},
+	{
+		"key": "ctrl+shift+p",
+		"command": "-workbench.action.showCommands"
+	},
+	{
+		"key": "ctrl+space o",
+		"command": "outline.focus"
+	},
+	{
+		"key": "ctrl+space j",
+		"command": "workbench.action.togglePanel"
+	},
+	{
+		"key": "ctrl+j",
+		"command": "-workbench.action.togglePanel"
+	},
+	{
+		"key": "ctrl+space z",
+		"command": "workbench.action.toggleZenMode",
+		"when": "!isAuxiliaryWindowFocusedContext"
+	},
+	{
+		"key": "ctrl+space r",
+		"command": "editor.action.rename",
+		"when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "ctrl+space n",
+		"command": "vscode-neovim.restart"
+	},
+	{
+		"key": "ctrl+space f",
+		"command": "editor.action.formatDocument",
+		"when": "editorTextFocus && !editorReadonly && !inCompositeEditor"
+	},
+	{
+		"key": "ctrl+space f",
+		"command": "notebook.formatCell",
+		"when": "editorTextFocus && inCompositeEditor && notebookEditable && !editorReadonly"
+	},
+	{
+		"key": "ctrl+space f",
+		"command": "notebook.format",
+		"when": "notebookEditable && !editorTextFocus && activeEditor == 'workbench.editor.notebook'"
+	},
+	// ============================================
+	// CHAPTER: "Ctrl + /" for searching.
+	// ============================================
+	{
+		"key": "ctrl+/",
+		"command": "-editor.action.commentLine",
+		"when": "editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "ctrl+/",
+		"command": "-editor.action.accessibleViewAcceptInlineCompletion",
+		"when": "accessibleViewIsShown && accessibleViewCurrentProviderId == 'inlineCompletions'"
+	},
+	{
+		"key": "ctrl+/",
+		"command": "-notebook.commentSelectedCells",
+		"when": "notebookEditable && notebookEditorFocused && !inputFocus"
+	},
+	{
+		"key": "ctrl+/ f",
+		"command": "workbench.action.quickOpen"
+	},
+	{
+		"key": "ctrl+/ s",
+		"command": "workbench.action.gotoSymbol",
+		"when": "!accessibilityHelpIsShown && !accessibleViewIsShown"
+	},
+	// ============================================
+	// CHAPTER: JUPYTER NOTEBOOKS (List focus)
+	// ============================================
+	// Move cell UP and DOWN
+	{
+		"key": "shift+j",
+		"command": "notebook.cell.moveDown",
+		"when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+	},
+	{
+		"key": "shift+k",
+		"command": "notebook.cell.moveUp",
+		"when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+	},
+	// NOTE: Toggle line numbers, outputs and inputs.
+	{
+		"key": "l",
+		"command": "-notebook.cell.toggleLineNumbers",
+		"when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+	},
+	{
+		"key": "l",
+		"command": "notebook.toggleLineNumbers",
+		"when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+	},
+	{
+		"key": "shift+l",
+		"command": "-notebook.toggleLineNumbers",
+		"when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+	},
+	{
+		"key": "o",
+		"command": "-list.toggleExpand",
+		"when": "listFocus && !inputFocus"
+	},
+	{
+		"key": "o",
+		"command": "notebook.cell.toggleOutputs",
+		"when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+	},
+	{
+		"key": "shift+o",
+		"command": "notebook.cell.collapseAllCellOutputs",
+		"when": "notebookEditorFocused && !inputFocus"
+	},
+	{
+		"key": "i",
+		"command": "notebook.cell.collapseCellInput",
+		"when": "notebookEditorFocused && !inputFocus && !notebookCellInputIsCollapsed"
+	},
+	{
+		"key": "i",
+		"command": "notebook.cell.expandCellInput",
+		"when": "notebookEditorFocused && !inputFocus && notebookCellInputIsCollapsed"
+	},
+	{
+		"key": "shift+i",
+		"command": "notebook.cell.collapseAllCellInputs",
+		"when": "notebookEditorFocused && !inputFocus"
+	},
+	// NOTE: Nvim commands for copying, pasting and selecting.
+	{
+		"key": "u",
+		"command": "undo",
+		"when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+	},
+	{
+		"key": "z",
+		"command": "-undo",
+		"when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+	},
+	{
+		"key": "p",
+		"command": "notebook.cell.paste",
+		"when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+	},
+	{
+		"key": "v",
+		"command": "-notebook.cell.paste",
+		"when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+	},
+	{
+		"key": "y o",
+		"command": "notebook.cell.copyOutput",
+		"when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+	},
+	{
+		"key": "y y",
+		"command": "notebook.cell.copy",
+		"when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+	},
+	{
+		"key": "c",
+		"command": "-notebook.cell.copy",
+		"when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+	},
+	// NOTE: v for extending selection down, V for extending selection up.
+	{
+		"key": "v",
+		"command": "list.expandSelectionDown",
+		"when": "listFocus && listSupportsMultiselect && !inputFocus && !treestickyScrollFocused"
+	},
+	{
+		"key": "shift+v",
+		"command": "list.expandSelectionUp",
+		"when": "listFocus && listSupportsMultiselect && !inputFocus && !treestickyScrollFocused"
+	},
+	// Convert to Markdown cell
+	{
+		"key": "m",
+		"command": "notebook.cell.changeToMarkdown",
+		"when": "notebookEditorFocused && !inputFocus"
+	},
+	// Convert to Code cell
+	{
+		"key": "c",
+		"command": "notebook.cell.changeToCode",
+		"when": "notebookEditorFocused && !inputFocus"
+	}
+	// TODO: Remove useless key bindings: (e.g. ctrl + e, ctrl + y, ctrl + )
+]

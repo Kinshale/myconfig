@@ -8,9 +8,9 @@ vim.opt.mouse = "a"
 vim.opt.showmode = false
 
 --  See `:help 'clipboard'`
-vim.schedule(function()
-	vim.opt.clipboard = "unnamedplus"
-end)
+-- vim.schedule(function()
+-- 	vim.opt.clipboard = "unnamedplus"
+-- end)
 
 -- Number of spaces for indentation
 vim.opt.shiftwidth = 4

@@ -1,20 +1,25 @@
 {
-  "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1
-  },
-  "vscode-neovim.neovimInitVimPaths.linux": "~/myconfig/vs-code/vscode_init.lua",
-  "keyboard.dispatch": "keyCode",
-  "vscode-neovim.neovimUseSystemClipboard": true,
-  "editor.fontLigatures": true,
-
-  "terminal.integrated.inheritEnv": false,
-  "mdb.mcp.server": "autoStartDisabled",
-  "editor.stickyScroll.enabled": false,
-  "editor.minimap.enabled": false,
-  "window.menuBarVisibility": "compact",
-  "notebook.outline.showCodeCellSymbols": false,
-  "notebook.outline.showMarkdownHeadersOnly": false,
-  "breadcrumbs.enabled": false,
-  "workbench.statusBar.visible": false,
-  "notebook.lineNumbers": "on"
+	"extensions.experimental.affinity": {
+		"asvetliakov.vscode-neovim": 1
+	},
+	"vscode-neovim.neovimInitVimPaths.linux": "~/myconfig/vs-code/vscode_init.lua",
+	"keyboard.dispatch": "keyCode",
+	"vscode-neovim.neovimUseSystemClipboard": true,
+	"editor.fontLigatures": true,
+	"terminal.integrated.inheritEnv": false,
+	"mdb.mcp.server": "autoStartDisabled",
+	"editor.stickyScroll.enabled": false,
+	"editor.minimap.enabled": false,
+	"window.menuBarVisibility": "compact",
+	"notebook.outline.showCodeCellSymbols": false,
+	"notebook.outline.showMarkdownHeadersOnly": false,
+	"breadcrumbs.enabled": false,
+	"workbench.statusBar.visible": false,
+	"github.copilot.enable": {
+		"*": false,
+		"plaintext": false,
+		"markdown": false,
+		"scminput": false
+	},
+	"github.copilot.nextEditSuggestions.enabled": true
 }

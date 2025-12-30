@@ -13,6 +13,10 @@
 		"command": "-workbench.action.toggleSidebarVisibility"
 	},
 	{
+		"key": "ctrl+space g",
+		"command": "workbench.action.toggleAuxiliaryBar" // Copilot bar.
+	},
+	{
 		"key": "ctrl+space p",
 		"command": "workbench.action.showCommands"
 	},
@@ -89,6 +93,102 @@
 		"when": "!accessibilityHelpIsShown && !accessibleViewIsShown"
 	},
 	// ============================================
+	// CHAPTER: "Copilot keybinding" for searching.
+	// ============================================
+	{
+		"key": "ctrl+g",
+		"command": "inlineChat.start",
+		"when": "editorFocus && inlineChatHasEditsAgent && inlineChatPossible && !editorReadonly && !editorSimpleInput || editorFocus && inlineChatHasProvider && inlineChatPossible && !editorReadonly && !editorSimpleInput"
+	},
+	{
+		"key": "ctrl+g",
+		"command": "inlineChat.startWithCurrentLine",
+		"when": "inlineChatHasProvider && inlineChatShowingHint && !editorReadonly && !inlineChatVisible"
+	},
+	{
+		"key": "ctrl+g",
+		"command": "inlineChat2.reveal",
+		"when": "inlineChatHasEditsAgent && !chatEdits.isGlobalEditingSession && chatEdits.requestCount >= 1"
+	},
+	{
+		"key": "ctrl+g",
+		"command": "-workbench.action.gotoLine"
+	},
+	{
+		"key": "ctrl+i",
+		"command": "-inlineChat2.reveal",
+		"when": "inlineChatHasEditsAgent && !chatEdits.isGlobalEditingSession && chatEdits.requestCount >= 1"
+	},
+	{
+		"key": "ctrl+i",
+		"command": "-inlineChat.start",
+		"when": "editorFocus && inlineChatHasEditsAgent && inlineChatPossible && !editorReadonly && !editorSimpleInput || editorFocus && inlineChatHasProvider && inlineChatPossible && !editorReadonly && !editorSimpleInput"
+	},
+	{
+		"key": "ctrl+i",
+		"command": "-inlineChat.startWithCurrentLine",
+		"when": "inlineChatHasProvider && inlineChatShowingHint && !editorReadonly && !inlineChatVisible"
+	},
+	{
+		"key": "ctrl+y",
+		"command": "-redo"
+	},
+	{
+		"key": "ctrl+y",
+		"command": "acceptSelectedCodeAction",
+		"when": "codeActionMenuVisible"
+	},
+	{
+		"key": "ctrl+y",
+		"command": "acceptSelectedSuggestion",
+		"when": "acceptSuggestionOnEnter && suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && suggestionMakesTextEdit && textInputFocus"
+	},
+	// Ctrl + y already accepts copilot changes
+	// Ctrl + x for rejecting copilot changes instead of ctrl + n.
+	// NOTE: Inline chat 2, is the "git-diff" alike AI mode where you prompt changes on the auxiliary bary. 
+	// NOTE: For inline-chat is the one you open with ctrl-i, and <Enter> or <Escape> for accepting / rejecting changes. It's kind of deprecated.
+	{
+		"key": "ctrl+x",
+		"command": "chatEditor.action.undoHunk",
+		"when": "chatEdits.hasEditorModifications && editorFocus && !chatEdits.isRequestInProgress || chatEdits.hasEditorModifications && notebookCellListFocused && !chatEdits.isRequestInProgress"
+	},
+	{
+		"key": "ctrl+shift+x",
+		"command": "chatEditor.action.reject",
+		"when": "chatEdits.hasEditorModifications && editorFocus && !chatEdits.isRequestInProgress || chatEdits.hasEditorModifications && notebookEditorFocused && !chatEdits.isRequestInProgress"
+	},
+	{
+		"key": "ctrl+shift+x",
+		"command": "inlineChat2.undo",
+		"when": "inlineChatHasEditsAgent && inlineChatVisible && !chatEdits.isRequestInProgress"
+	},
+	{
+		"key": "ctrl+n",
+		"command": "-chatEditor.action.undoHunk",
+		"when": "chatEdits.hasEditorModifications && editorFocus && !chatEdits.isRequestInProgress || chatEdits.hasEditorModifications && notebookCellListFocused && !chatEdits.isRequestInProgress"
+	},
+	{
+		"key": "ctrl+shift+n",
+		"command": "-chatEditor.action.reject",
+		"when": "chatEdits.hasEditorModifications && editorFocus && !chatEdits.isRequestInProgress || chatEdits.hasEditorModifications && notebookEditorFocused && !chatEdits.isRequestInProgress"
+	},
+	{
+		"key": "ctrl+shift+n",
+		"command": "-inlineChat2.undo",
+		"when": "inlineChatHasEditsAgent && inlineChatVisible && !chatEdits.isRequestInProgress"
+	},
+	// Next and previous edit
+	{
+		"key": "ctrl+n",
+		"command": "chatEditor.action.navigateNext",
+		"when": "chatEdits.hasEditorModifications && chatIsEnabled && editorFocus || chatEdits.hasEditorModifications && chatIsEnabled && notebookCellListFocused"
+	},
+	{
+		"key": "ctrl+p",
+		"command": "chatEditor.action.navigatePrevious",
+		"when": "chatEdits.hasEditorModifications && chatIsEnabled && editorFocus || chatEdits.hasEditorModifications && chatIsEnabled && notebookCellListFocused"
+	},
+	// ============================================
 	// CHAPTER: JUPYTER NOTEBOOKS (List focus)
 	// ============================================
 	// Move cell UP and DOWN
@@ -129,11 +229,6 @@
 		"when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
 	},
 	{
-		"key": "shift+o",
-		"command": "notebook.cell.collapseAllCellOutputs",
-		"when": "notebookEditorFocused && !inputFocus"
-	},
-	{
 		"key": "i",
 		"command": "notebook.cell.collapseCellInput",
 		"when": "notebookEditorFocused && !inputFocus && !notebookCellInputIsCollapsed"
@@ -142,11 +237,6 @@
 		"key": "i",
 		"command": "notebook.cell.expandCellInput",
 		"when": "notebookEditorFocused && !inputFocus && notebookCellInputIsCollapsed"
-	},
-	{
-		"key": "shift+i",
-		"command": "notebook.cell.collapseAllCellInputs",
-		"when": "notebookEditorFocused && !inputFocus"
 	},
 	// NOTE: Nvim commands for copying, pasting and selecting.
 	{
@@ -184,7 +274,7 @@
 		"command": "-notebook.cell.copy",
 		"when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
 	},
-	// NOTE: v for extending selection down, V for extending selection up.
+	// NOTE: v for extending selection down, V for extending selection up. (Ctrl + A selects all cells)
 	{
 		"key": "v",
 		"command": "list.expandSelectionDown",
@@ -206,6 +296,105 @@
 		"key": "c",
 		"command": "notebook.cell.changeToCode",
 		"when": "notebookEditorFocused && !inputFocus"
+	},
+	// TODO: Remove useless nvim ctrl + key bindings: (e.g. C-e, C-y, C-h, C-u,). I can reuse them in VS-code. 
+	{
+		"key": "ctrl+y",
+		"command": "-vscode-neovim.ctrl-y",
+		"when": "editorTextFocus && neovim.ctrlKeysNormal.y && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+	},
+	{
+		"key": "ctrl+y",
+		"command": "-vscode-neovim.send",
+		"when": "editorTextFocus && neovim.ctrlKeysInsert.y && neovim.init && neovim.mode == 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+	},
+	{
+		"key": "ctrl+e",
+		"command": "-workbench.action.quickOpen"
+	},
+	{
+		"key": "ctrl+e",
+		"command": "-vscode-neovim.ctrl-e",
+		"when": "editorTextFocus && neovim.ctrlKeysNormal.e && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+	},
+	{
+		"key": "ctrl+e",
+		"command": "-vscode-neovim.send",
+		"when": "editorTextFocus && neovim.ctrlKeysInsert.e && neovim.init && neovim.mode == 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+	},
+	{
+		"key": "ctrl+x",
+		"command": "-vscode-neovim.send",
+		"when": "editorTextFocus && neovim.ctrlKeysNormal.x && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+	},
+	{
+		"key": "ctrl+x",
+		"command": "-vscode-neovim.send",
+		"when": "editorTextFocus && neovim.ctrlKeysInsert.x && neovim.init && neovim.mode == 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+	},
+	{
+		"key": "ctrl+i",
+		"command": "-vscode-neovim.send",
+		"when": "editorTextFocus && neovim.ctrlKeysNormal.i && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+	},
+	{
+		"key": "ctrl+i",
+		"command": "-vscode-neovim.send",
+		"when": "editorTextFocus && neovim.ctrlKeysInsert.i && neovim.init && neovim.mode == 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+	},
+	{
+		"key": "ctrl+z",
+		"command": "-vscode-neovim.send",
+		"when": "editorTextFocus && neovim.ctrlKeysInsert.z && neovim.init && neovim.mode == 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+	},
+	{
+		"key": "ctrl+z",
+		"command": "-vscode-neovim.send",
+		"when": "editorTextFocus && neovim.ctrlKeysNormal.z && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+	},
+	{
+		"key": "ctrl+k",
+		"command": "-vscode-neovim.send",
+		"when": "editorTextFocus && neovim.ctrlKeysInsert.k && neovim.init && neovim.mode == 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+	},
+	{
+		"key": "ctrl+k",
+		"command": "-vscode-neovim.send",
+		"when": "editorTextFocus && neovim.ctrlKeysNormal.k && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+	},
+	{
+		"key": "ctrl+s",
+		"command": "-vscode-neovim.send",
+		"when": "editorTextFocus && neovim.ctrlKeysNormal.s && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+	},
+	{
+		"key": "ctrl+s",
+		"command": "-vscode-neovim.send",
+		"when": "editorTextFocus && neovim.ctrlKeysInsert.s && neovim.init && neovim.mode == 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+	},
+	{
+		"key": "ctrl+a",
+		"command": "-vscode-neovim.send",
+		"when": "editorTextFocus && neovim.ctrlKeysNormal.a && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+	},
+	{
+		"key": "ctrl+a",
+		"command": "-vscode-neovim.send",
+		"when": "editorTextFocus && neovim.ctrlKeysInsert.a && neovim.init && neovim.mode == 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+	},
+	{
+		"key": "ctrl+g",
+		"command": "-vscode-neovim.send-cmdline",
+		"when": "neovim.init && neovim.mode == 'cmdline'"
+	},
+	{
+		"key": "ctrl+g",
+		"command": "-vscode-neovim.send",
+		"when": "editorTextFocus && neovim.ctrlKeysNormal.g && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+	},
+	{
+		"key": "ctrl+g",
+		"command": "-vscode-neovim.send",
+		"when": "editorTextFocus && neovim.ctrlKeysInsert.g && neovim.init && neovim.mode == 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
 	}
-	// TODO: Remove useless key bindings: (e.g. ctrl + e, ctrl + y, ctrl + )
 ]

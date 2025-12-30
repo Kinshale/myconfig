@@ -32,12 +32,6 @@ vim.api.nvim_create_autocmd("textyankpost", {
 	end,
 })
 
--- Map <C-y> to accept current suggestion in VSCode
--- FIX: Doesn't work (Move to shortcuts.json)
--- vim.keymap.set("i", "<C-y>", function()
--- 	vscode.action("acceptSelectedSuggestion")
--- end, opts)
-
 -- s by default deletes a character and enters insert mode
 vim.keymap.set("n", "s", "<Nop>")
 vim.keymap.set("x", "s", "<Nop>")

@@ -9,7 +9,7 @@ function fcd --description "Fuzzy find and change directory"
     end
 
     set -l dir (
-        fd --hidden --type d . "$search_dir" 2>/dev/null |
+        fdfind --hidden --type d . "$search_dir" 2>/dev/null |
         _fzf_wrapper \
             --prompt="Directory> " \
             --preview="eza --icons --group-directories-first --tree --level=2 {}" \

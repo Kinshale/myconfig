@@ -6,7 +6,7 @@ function fopen --description "Fuzzy find and open files"
     end
 
     set -l file (
-        fd --hidden --type f . "$search_dir" 2>/dev/null |
+        fdfind --hidden --type f . "$search_dir" 2>/dev/null |
         _fzf_wrapper \
             --prompt="File> " \
     )

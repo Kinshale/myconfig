@@ -7,6 +7,8 @@ if status is-interactive
     set -gx PATH "$HOME/myconfig/scripts" $PATH
     set -gx PATH "$HOME/myconfig/fish/fzf_fisher/" $PATH
 
+	set -gx EDITOR nvim
+
     set -g fish_greeting
 
     set -ga fish_function_path ~/.config/fish/my_functions
@@ -65,25 +67,5 @@ if status is-interactive
         alias exa='eza --icons --group-directories-first'
         alias tree='eza --icons --group-directories-first --tree'
     end
+
 end
-
-## >>> conda initialize >>>
-## !! Contents within this block are managed by 'conda init' !!
-#if test -f /home/ale/miniconda3/bin/conda
-#    eval /home/ale/miniconda3/bin/conda "shell.fish" "hook" $argv | source
-#else
-#    if test -f "/home/ale/miniconda3/etc/fish/conf.d/conda.fish"
-#        . "/home/ale/miniconda3/etc/fish/conf.d/conda.fish"
-#    else
-#        set -x PATH "/home/ale/miniconda3/bin" $PATH
-#    end
-#end
-## <<< conda initialize <<<
-#
-
-# >>> mamba initialize >>>
-# !! Contents within this block are managed by 'micromamba shell init' !!
-# set -gx MAMBA_EXE "/home/ale/.local/bin/micromamba"
-# set -gx MAMBA_ROOT_PREFIX "/home/ale/micromamba"
-# $MAMBA_EXE shell hook --shell fish --root-prefix $MAMBA_ROOT_PREFIX | source
-# <<< mamba initialize <<<

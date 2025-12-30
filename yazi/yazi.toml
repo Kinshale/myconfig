@@ -1,0 +1,4 @@
+[mgr]
+ratio = [2, 5, 5]
+
+# TODO: fzf plugin integration

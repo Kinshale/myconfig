@@ -1,0 +1,18 @@
+[[mgr.prepend_keymap]]
+on   = [ "g", "u" ]
+run  = "cd ~/Documents/uni"
+desc = "Go to uni"
+
+[[mgr.prepend_keymap]]
+on   = [ "g", "s" ]
+run  = "cd ~/Documents/scrivere"
+desc = "Go to scrivere"
+
+[[mgr.prepend_keymap]]
+on   = [ "g", "m" ]
+run  = "cd ~/myconfig/"
+desc = "Go to myconfig"
+
+# TODO: u to unzip
+
+# TODO: use the shell

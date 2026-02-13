@@ -222,6 +222,7 @@ return {
 						name = "lazydev",
 						group_index = 0,
 					},
+					-- { name = "copilot", group_index = 2 }, --FIXME: 
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "path" },

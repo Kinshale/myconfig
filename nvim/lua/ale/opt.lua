@@ -7,6 +7,9 @@ vim.opt.mouse = "a"
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
 
+-- Enable true color support
+-- vim.opt.termguicolors = true
+
 --  See `:help 'clipboard'`
 -- vim.schedule(function()
 -- 	vim.opt.clipboard = "unnamedplus"

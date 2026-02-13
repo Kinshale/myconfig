@@ -68,9 +68,10 @@ return {
 				prompt_title = "Live Grep in Open Files",
 			})
 		end, { desc = "[W]orkspace [/] find" })
-		--
-		-- vim.keymap.set("n", "<leader>sn", function()
-		-- 	builtin.find_files({ cwd = vim.fn.stdpath("config") })
-		-- end, { desc = "[S]earch [N]eovim files" })
+
+		-- Search neovim file
+		vim.keymap.set("n", "<leader>sn", function()
+			builtin.find_files({ cwd = vim.fn.expand("~/myconfig/nvim/") })
+		end, { desc = "[S]earch [N]eovim files" })
 	end,
 }

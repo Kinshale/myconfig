@@ -1,7 +1,7 @@
 #!/bin/bash 
 
 # Wait a few seconds for desktop to fully load
-sleep 2
+sleep 1
 
 # Load xmodmap
 xmodmap /home/ale/xmm

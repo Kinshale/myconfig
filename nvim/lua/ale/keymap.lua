@@ -32,8 +32,12 @@ vim.keymap.set("v", "<A-v>", "<C-v>")
 vim.keymap.set("n", "s", "<Nop>")
 vim.keymap.set("x", "s", "<Nop>")
 
-vim.keymap.set("i", "<c-s>", "<esc>[s1z=`]a", { desc = "[S]pell correct" })
-vim.keymap.set("n", "<c-s>", "[s1z=", { desc = "[S]pell correct" })
+-- Normal Mode: <Ctrl-s>
+-- TODO: Improve this. Doesn't work fluidly.
+vim.keymap.set("n", "<C-s>", "<Nop>")
+vim.keymap.set("n", "<C-s>l", "]s1z=", { desc = "[S]pell correct right" })
+vim.keymap.set("n", "<C-s>h", "[s1z=", { desc = "[S]pell correct left" })
+vim.keymap.set("i", "<C-s>", "<esc>[s1z=`]a", { desc = "[S]pell correct" })
 
 -- Toggling spell shortcuts
 vim.keymap.set(
@@ -76,3 +80,7 @@ vim.keymap.set("n", "<C-w>n", "<cmd>tabnext<CR>", { desc = "Next tab" })
 vim.keymap.set("n", "<C-w>p", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
 
 vim.keymap.set("n", "<C-w>o", "<cmd>tabonly<CR>", { desc = "Only tab (close others)" })
+
+-- TODO: Ctrl + A for selecting everything
+--
+-- TODO: Ctrl + A for selecting everything

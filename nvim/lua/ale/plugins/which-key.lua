@@ -45,6 +45,7 @@ return {
 		spec = {
 			{ "<leader>a", group = "[A]ctions" },
 			{ "<leader>b", group = "[B]uffer" },
+			{ "<leader>c", group = "[C]opilot" },
 			{ "<leader>l", group = "[L]atex" },
 			{ "<leader>s", group = "[S]earch" },
 			{ "<leader>t", group = "[T]oggle" },

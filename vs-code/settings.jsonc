@@ -21,5 +21,7 @@
 		"markdown": false,
 		"scminput": false
 	},
-	"github.copilot.nextEditSuggestions.enabled": true
+	"github.copilot.nextEditSuggestions.enabled": true,
+	"notebook.lineNumbers": "on",
+	"explorer.confirmDragAndDrop": false
 }

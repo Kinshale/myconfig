@@ -13,6 +13,11 @@ on   = [ "g", "m" ]
 run  = "cd ~/myconfig/"
 desc = "Go to myconfig"
 
-# TODO: u to unzip
+[[mgr.prepend_keymap]]
+on   = [ "g", "v" ]
+run  = "cd ~/Music/violoncello/"
+desc = "Go to myconfig"
+
+# NOTE: o also unzips
 
 # TODO: use the shell

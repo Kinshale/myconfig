@@ -42,27 +42,27 @@ return {
 		-- See `:help telescope.builtin`
 		local builtin = require("telescope.builtin")
 
-		vim.keymap.set("n", "<leader>so", builtin.buffers, { desc = "[S]earch [O]pen files" })
-		vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
-		vim.keymap.set("n", "<leader>sp", builtin.oldfiles, { desc = "[S]earch [P]revious files" }) -- Recently opened
+		vim.keymap.set("n", "<leader>so", builtin.buffers, { desc = "[O]pen files" })
+		vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[F]iles" })
+		vim.keymap.set("n", "<leader>sp", builtin.oldfiles, { desc = "[P]revious files" }) -- Recently opened
 
-		vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
-		vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
-		vim.keymap.set("n", "<leader>sj", builtin.jumplist, { desc = "[S]earch [J]ump list" })
-		-- vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
+		vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[H]elp" })
+		vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[K]eymaps" })
+		vim.keymap.set("n", "<leader>sj", builtin.jumplist, { desc = "[J]ump list" })
+		-- vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[R]esume" })
 
 		vim.keymap.set("n", "<leader>sg", function()
 			builtin.live_grep()
-		end, { desc = "[S]earch [G]rep (all files)" })
+		end, { desc = "[G]rep (all files)" })
 
-		vim.keymap.set("n", "<leader>b/", function()
+		vim.keymap.set("n", "<leader>s/", function()
 			builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 				winblend = 10,
 				previewer = false,
 			}))
-		end, { desc = "[B]uffer [/] fuzzy" })
+		end, { desc = "[/] fuzzy" })
 
-		vim.keymap.set("n", "<leader>w/", function()
+		vim.keymap.set("n", "<leader>sw/", function()
 			builtin.live_grep({
 				grep_open_files = true,
 				prompt_title = "Live Grep in Open Files",
@@ -72,6 +72,6 @@ return {
 		-- Search neovim file
 		vim.keymap.set("n", "<leader>sn", function()
 			builtin.find_files({ cwd = vim.fn.expand("~/myconfig/nvim/") })
-		end, { desc = "[S]earch [N]eovim files" })
+		end, { desc = "[N]eovim files" })
 	end,
 }

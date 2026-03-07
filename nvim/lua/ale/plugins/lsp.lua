@@ -74,30 +74,14 @@ return {
 					map("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
 					map("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
 
-					-- Actions
-					map("<leader>ar", vim.lsp.buf.rename, "[R]ename")
-					map("<leader>af", vim.lsp.buf.format, "[F]ormat")
-					map("<leader>al", "<cmd>LspRestart<CR>", "Restart [L]sp")
-					map("<leader>ac", vim.lsp.buf.code_action, "[C]ode", { "n", "x" })
+					-- Useful
+					map("<leader>r", vim.lsp.buf.rename, "[R]ename")
+					map("<leader>f", vim.lsp.buf.format, "[F]ormat")
+					map("<leader>a", vim.lsp.buf.code_action, "code [A]ctions", { "n", "x" })
 
-					-- Buffer.
-					map("<leader>bs", require("telescope.builtin").lsp_document_symbols, "[B]uffer [S]ymbols")
-					map("<leader>bd", require("telescope.builtin").diagnostics, "[B]uffer [D]iagnostics")
-					map("<leader>bq", vim.diagnostic.setqflist, "[Q]uickfix list")
-
-					-- Workspace
-					map(
-						"<leader>ws",
-						require("telescope.builtin").lsp_dynamic_workspace_symbols,
-						"[W]orkspace [S]ymbols"
-					)
-
-					-- Toggling
-					map("<leader>td", function()
-						vim.diagnostic.enable(not vim.diagnostic.is_enabled())
-					end, "[T]oggle [D]iagnostic")
-
-					map("<leader>tl", function()
+					-- Lsp
+					map("<leader>,lr", "<cmd>LspRestart<CR>", "[L]sp [R]estart")
+					map("<leader>,lt", function()
 						local clients = vim.lsp.get_clients({ bufnr = 0 })
 						if #clients > 0 then
 							vim.cmd("LspStop")
@@ -106,7 +90,24 @@ return {
 							vim.cmd("LspStart")
 							print("LSP started")
 						end
-					end, "[T]oggle [L]sp")
+					end, "[L]sp [T]oggle")
+
+					-- Buffer.
+					map("<leader>ss", require("telescope.builtin").lsp_document_symbols, "[S]ymbols")
+					map("<leader>sd", require("telescope.builtin").diagnostics, "[D]iagnostics")
+					map("<leader>sq", vim.diagnostic.setqflist, "[Q]uickfix")
+
+					-- Workspace
+					map(
+						"<leader>sws",
+						require("telescope.builtin").lsp_dynamic_workspace_symbols,
+						"[W]orkspace [S]ymbols"
+					)
+
+					-- Toggling
+					map("<leader>td", function()
+						vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+					end, "[D]iagnostic")
 
 					-- Documentation
 					map("K", vim.lsp.buf.hover, "Hover Documentation")
@@ -222,7 +223,7 @@ return {
 						name = "lazydev",
 						group_index = 0,
 					},
-					-- { name = "copilot", group_index = 2 }, --FIXME: 
+					-- { name = "copilot", group_index = 2 }, --FIXME:
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "path" },

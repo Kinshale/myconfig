@@ -16,11 +16,11 @@ return {
 			-- Add toggle keymap
 			vim.keymap.set("n", "<leader>tg", function()
 				require("gitsigns").toggle_signs()
-			end, { desc = "[T]oggle [G]it signs" })
+			end, { desc = "[G]it signs" })
 		end,
 	},
 	-- {
-	-- 	"tpope/vim-fugitive",
+	--[S]earch  	"tpope/vim-fugitive",
 	-- 	config = function()
 	-- 		vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "[G]it status" })
 	-- 		-- @todo: what do the following commands do?

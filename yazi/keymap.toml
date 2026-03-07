@@ -16,7 +16,7 @@ desc = "Go to myconfig"
 [[mgr.prepend_keymap]]
 on   = [ "g", "v" ]
 run  = "cd ~/Music/violoncello/"
-desc = "Go to myconfig"
+desc = "Go to violoncello"
 
 # NOTE: o also unzips
 

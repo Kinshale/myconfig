@@ -13,7 +13,6 @@ vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "[Esc] terminal" })
 
 -- CHAPTER: Copying and pasting
 
--- NOTE:
 -- '"+' is synchronized with system clipboard,
 -- '""' is the last deleted / yanked / changed text.
 
@@ -32,7 +31,6 @@ vim.keymap.set("v", "<A-v>", "<C-v>")
 vim.keymap.set("n", "s", "<Nop>")
 vim.keymap.set("x", "s", "<Nop>")
 
--- Normal Mode: <Ctrl-s>
 -- TODO: Improve this. Doesn't work fluidly.
 vim.keymap.set("n", "<C-s>", "<Nop>")
 vim.keymap.set("n", "<C-s>l", "]s1z=", { desc = "[S]pell correct right" })
@@ -40,25 +38,15 @@ vim.keymap.set("n", "<C-s>h", "[s1z=", { desc = "[S]pell correct left" })
 vim.keymap.set("i", "<C-s>", "<esc>[s1z=`]a", { desc = "[S]pell correct" })
 
 -- Toggling spell shortcuts
-vim.keymap.set(
-	"n",
-	"<leader>tsi",
-	"<cmd>set spell<cr><cmd>set spelllang=en_us,it<cr>",
-	{ desc = "[T]oggle [s]pell [i]t & en_us" }
-)
-vim.keymap.set(
-	"n",
-	"<leader>tsu",
-	"<cmd>set spell<cr><cmd>set spelllang=en_us<cr>",
-	{ desc = "[T]oggle [s]pell en_[u]s" }
-)
-vim.keymap.set("n", "<leader>tsn", "<cmd>set nospell<cr>", { desc = "[T]oggle [s]pell [n]o" })
+vim.keymap.set("n", "<leader>tsi", "<cmd>set spell<cr><cmd>set spelllang=en_us,it<cr>", { desc = "[i]t & en_us" })
+vim.keymap.set("n", "<leader>tsu", "<cmd>set spell<cr><cmd>set spelllang=en_us<cr>", { desc = "en_[u]s" })
+vim.keymap.set("n", "<leader>tsn", "<cmd>set nospell<cr>", { desc = "[n]o" })
 
 -- CHAPTER: Toggling
 vim.keymap.set("n", "<leader>tn", function()
 	vim.o.number = not vim.o.number
 	vim.o.relativenumber = not vim.o.relativenumber
-end, { desc = "[T]oggle line [N]umbers" })
+end, { desc = "Line [N]umbers" })
 
 -- CHAPTER: Window and tab management
 -- Window management
@@ -72,15 +60,17 @@ vim.keymap.set("n", "<C-w>s", "<cmd>split<CR>", { desc = "Split Horizontally" })
 vim.keymap.set("n", "<C-w>w", "<cmd>close<CR>", { desc = "Close Window" })
 
 -- Tab management
--- TODO: Fix this stuff
-vim.keymap.set("n", "<C-w>t", "<cmd>tabnew<CR>", { desc = "New tab" })
-vim.keymap.set("n", "<C-w>q", "<cmd>tabclose<CR>", { desc = "Close tab" })
-
-vim.keymap.set("n", "<C-w>n", "<cmd>tabnext<CR>", { desc = "Next tab" })
-vim.keymap.set("n", "<C-w>p", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
-
-vim.keymap.set("n", "<C-w>o", "<cmd>tabonly<CR>", { desc = "Only tab (close others)" })
+vim.keymap.set("n", "<C-t>", "<Nop>")
+vim.keymap.set("n", "<C-q>", "<Nop>")
+vim.keymap.set("n", "<C-t>", "<cmd>tabnew<CR>", { desc = "New tab" })
+vim.keymap.set("n", "<C-q>", "<cmd>tabclose<CR>", { desc = "Close tab" })
 
 -- TODO: Ctrl + A for selecting everything
---
--- TODO: Ctrl + A for selecting everything
+
+-- CHAPTER: Plugin / info
+vim.keymap.set("n", "<leader>,p", "<cmd>Lazy<CR>", { desc = "[P]lugin manager (Lazy)" })
+vim.keymap.set("n", "<leader>,f", "<cmd>ConformInfo<CR>", { desc = "[F]ormatter Info (Conform)" })
+vim.keymap.set("n", "<leader>,li", "<cmd>LspInfo<CR>", { desc = "[L]sp [I]nfo" })
+vim.keymap.set("n", "<leader>,m", "<cmd>Mason<CR>", { desc = "[M]ason (LSP/DAP/Linter Manager)" })
+vim.keymap.set("n", "<leader>,t", "<cmd>TSInstallInfo<CR>", { desc = "[T]reesitter Info" })
+vim.keymap.set("n", "<leader>,c", "<cmd>checkhealth<CR>", { desc = "[C]heckhealth (Diagnostics)" })

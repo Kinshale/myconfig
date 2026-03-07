@@ -21,13 +21,13 @@ return {
 			},
 		})
 
-		vim.keymap.set("n", "<leader>wpd", "<cmd>SessionDelete<CR>", { desc = "[P]ersisted [D]elete session" })
+		vim.keymap.set("n", "<leader>,Pd", "<cmd>SessionDelete<CR>", { desc = "[D]elete session" })
 
 		-- DOUBT: Kind of useless if autosave and autoload are enabled
-		vim.keymap.set("n", "<leader>wpl", "<cmd>SessionLoad<CR>", { desc = "[P]ersisted [L]oad session" })
-		vim.keymap.set("n", "<leader>wps", "<cmd>SessionSave<CR>", { desc = "[P]ersisted [S]ave session" })
+		vim.keymap.set("n", "<leader>,Pl", "<cmd>SessionLoad<CR>", { desc = "[L]oad session" })
+		vim.keymap.set("n", "<leader>,Ps", "<cmd>SessionSave<CR>", { desc = "[S]ave session" })
 
-		vim.keymap.set("n", "<leader>wpf", "<cmd>Telescope persisted<CR>", { desc = "[P]ersisted [F]ind sessions" })
+		vim.keymap.set("n", "<leader>,Pf", "<cmd>Telescope persisted<CR>", { desc = "[F]ind sessions" })
 
 		-- Commands while in Telescope persisted (Be careful to be in insert mode)
 		-- <CR> - Open/source the session file

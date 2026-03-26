@@ -21,7 +21,6 @@
 		"markdown": false,
 		"scminput": false
 	},
-	"github.copilot.nextEditSuggestions.enabled": true,
-	"notebook.lineNumbers": "on",
+	"github.copilot.nextEditSuggestions.enabled": true, // FIX: Is it necessary?
 	"explorer.confirmDragAndDrop": false
 }

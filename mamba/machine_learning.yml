@@ -16,9 +16,9 @@ dependencies:
   - ipykernel
   - pip
   - pip:
-      - textblob
-      - wordcloud
-      - transformers # Pre-trained transformer models (BERT, GPT, etc ..)
-      - datasets
-      - torch # Deep learning framework (PyTorch)
-      - evaluate
+        - textblob
+        - wordcloud
+        - torch --index-url https://download.pytorch.org/whl/cpu  # ← add this first
+        - transformers
+        - datasets
+        - evaluate

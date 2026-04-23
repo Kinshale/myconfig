@@ -18,6 +18,11 @@ on   = [ "g", "v" ]
 run  = "cd ~/Music/violoncello/"
 desc = "Go to violoncello"
 
+[[mgr.prepend_keymap]]
+on   = [ "g", "l" ]
+run  = "cd ~/Desktop/lyon-arduino/"
+desc = "Go to lyon course"
+
 # NOTE: o also unzips
 
 # TODO: use the shell

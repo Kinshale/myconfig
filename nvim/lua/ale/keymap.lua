@@ -26,27 +26,12 @@ vim.keymap.set("i", "<C-v>", '<Esc>"+pa')
 vim.keymap.set("n", "<A-v>", "<C-v>")
 vim.keymap.set("v", "<A-v>", "<C-v>")
 
--- CHAPTER: Spelling
--- s by default deletes a character and enters insert mode
-vim.keymap.set("n", "s", "<Nop>")
-vim.keymap.set("x", "s", "<Nop>")
+-- CHAPTER: Running and Executing
+vim.keymap.set("n", "<leader>rv", function()
+	local cmd = "make -C build; and ./build/VulkanHelloWorld"
 
--- TODO: Improve this. Doesn't work fluidly.
-vim.keymap.set("n", "<C-s>", "<Nop>")
-vim.keymap.set("n", "<C-s>l", "]s1z=", { desc = "[S]pell correct right" })
-vim.keymap.set("n", "<C-s>h", "[s1z=", { desc = "[S]pell correct left" })
-vim.keymap.set("i", "<C-s>", "<esc>[s1z=`]a", { desc = "[S]pell correct" })
-
--- Toggling spell shortcuts
-vim.keymap.set("n", "<leader>tsi", "<cmd>set spell<cr><cmd>set spelllang=en_us,it<cr>", { desc = "[i]t & en_us" })
-vim.keymap.set("n", "<leader>tsu", "<cmd>set spell<cr><cmd>set spelllang=en_us<cr>", { desc = "en_[u]s" })
-vim.keymap.set("n", "<leader>tsn", "<cmd>set nospell<cr>", { desc = "[n]o" })
-
--- CHAPTER: Toggling
-vim.keymap.set("n", "<leader>tn", function()
-	vim.o.number = not vim.o.number
-	vim.o.relativenumber = not vim.o.relativenumber
-end, { desc = "Line [N]umbers" })
+	vim.cmd("split | term fish -c " .. vim.fn.shellescape(cmd))
+end, { desc = "B&R Vulkan" })
 
 -- CHAPTER: Window and tab management
 -- Window management
@@ -68,9 +53,31 @@ vim.keymap.set("n", "<C-q>", "<cmd>tabclose<CR>", { desc = "Close tab" })
 -- TODO: Ctrl + A for selecting everything
 
 -- CHAPTER: Plugin / info
-vim.keymap.set("n", "<leader>,p", "<cmd>Lazy<CR>", { desc = "[P]lugin manager (Lazy)" })
-vim.keymap.set("n", "<leader>,f", "<cmd>ConformInfo<CR>", { desc = "[F]ormatter Info (Conform)" })
-vim.keymap.set("n", "<leader>,li", "<cmd>LspInfo<CR>", { desc = "[L]sp [I]nfo" })
+vim.keymap.set("n", "<leader>,l", "<cmd>Lazy<CR>", { desc = "[L]azy (Plugin Manager)" })
 vim.keymap.set("n", "<leader>,m", "<cmd>Mason<CR>", { desc = "[M]ason (LSP/DAP/Linter Manager)" })
-vim.keymap.set("n", "<leader>,t", "<cmd>TSInstallInfo<CR>", { desc = "[T]reesitter Info" })
+vim.keymap.set("n", "<leader>,if", "<cmd>ConformInfo<CR>", { desc = "[I]nfo [F]ormatter (Conform)" })
+vim.keymap.set("n", "<leader>,il", "<cmd>LspInfo<CR>", { desc = "[I]nfo [L]sp" })
+vim.keymap.set("n", "<leader>,it", "<cmd>TSInstallInfo<CR>", { desc = "[I]nfo [T]reesitter" })
 vim.keymap.set("n", "<leader>,c", "<cmd>checkhealth<CR>", { desc = "[C]heckhealth (Diagnostics)" })
+
+-- CHAPTER: Spelling
+-- s by default deletes a character and enters insert mode
+vim.keymap.set("n", "s", "<Nop>")
+vim.keymap.set("x", "s", "<Nop>")
+
+-- TODO: Improve this. Doesn't work fluidly.
+vim.keymap.set("n", "<C-s>", "<Nop>")
+vim.keymap.set("n", "<C-s>l", "]s1z=", { desc = "[S]pell correct right" })
+vim.keymap.set("n", "<C-s>h", "[s1z=", { desc = "[S]pell correct left" })
+vim.keymap.set("i", "<C-s>", "<esc>[s1z=`]a", { desc = "[S]pell correct" })
+
+-- Toggling spell shortcuts
+vim.keymap.set("n", "<leader>tsi", "<cmd>set spell<cr><cmd>set spelllang=en_us,it<cr>", { desc = "[i]t & en_us" })
+vim.keymap.set("n", "<leader>tsu", "<cmd>set spell<cr><cmd>set spelllang=en_us<cr>", { desc = "en_[u]s" })
+vim.keymap.set("n", "<leader>tsn", "<cmd>set nospell<cr>", { desc = "[n]o" })
+
+-- CHAPTER: Toggling
+vim.keymap.set("n", "<leader>tn", function()
+	vim.o.number = not vim.o.number
+	vim.o.relativenumber = not vim.o.relativenumber
+end, { desc = "Line [N]umbers" })

@@ -35,7 +35,8 @@ return {
 				automatic_installation = true,
 				handlers = {
 					function(server_name)
-						require("lspconfig")[server_name].setup({ capabilities = capabilities })
+						local server_opts = { capabilities = capabilities }
+						require("lspconfig")[server_name].setup(server_opts)
 					end,
 				},
 			})
@@ -75,13 +76,12 @@ return {
 					map("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
 
 					-- Useful
-					map("<leader>r", vim.lsp.buf.rename, "[R]ename")
-					map("<leader>f", vim.lsp.buf.format, "[F]ormat")
-					map("<leader>a", vim.lsp.buf.code_action, "code [A]ctions", { "n", "x" })
+					map("<leader>ar", vim.lsp.buf.rename, "[R]ename")
+					map("<leader>af", vim.lsp.buf.format, "[F]ormat")
+					map("<leader>ac", vim.lsp.buf.code_action, "[C]ode actions", { "n", "x" })
 
 					-- Lsp
-					map("<leader>,lr", "<cmd>LspRestart<CR>", "[L]sp [R]estart")
-					map("<leader>,lt", function()
+					map("<leader>tl", function()
 						local clients = vim.lsp.get_clients({ bufnr = 0 })
 						if #clients > 0 then
 							vim.cmd("LspStop")
@@ -90,7 +90,7 @@ return {
 							vim.cmd("LspStart")
 							print("LSP started")
 						end
-					end, "[L]sp [T]oggle")
+					end, "[L]SP Toggle")
 
 					-- Buffer.
 					map("<leader>ss", require("telescope.builtin").lsp_document_symbols, "[S]ymbols")

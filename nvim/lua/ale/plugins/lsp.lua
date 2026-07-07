@@ -73,12 +73,16 @@ return {
 					map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 					-- map("gt", vim.lsp.buf.type_definition, "[G]oto [T]ype definition") -- FIX: Conflicts with goto_next tab.
 					map("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
-					map("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
+
+					-- Call Hierarchy with Telescope
+					-- Call Hierarchy (built-in Neovim LSP)
+					map("<leader>hi", "<cmd>Telescope hierarchy incoming_calls<cr>", "[H]ierarchy [I]ncoming")
+					map("<leader>ho", "<cmd>Telescope hierarchy outgoing_calls<cr>", "[H]ierarchy [O]utgoing")
 
 					-- Useful
 					map("<leader>ar", vim.lsp.buf.rename, "[R]ename")
 					map("<leader>af", vim.lsp.buf.format, "[F]ormat")
-					map("<leader>ac", vim.lsp.buf.code_action, "[C]ode actions", { "n", "x" })
+					map("<leader>aa", vim.lsp.buf.code_action, "[A]ctions", { "n", "x" })
 
 					-- Lsp
 					map("<leader>tl", function()

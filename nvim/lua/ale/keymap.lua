@@ -26,6 +26,16 @@ vim.keymap.set("i", "<C-v>", '<Esc>"+pa')
 vim.keymap.set("n", "<A-v>", "<C-v>")
 vim.keymap.set("v", "<A-v>", "<C-v>")
 
+-- CHAPTER: Change directory
+vim.keymap.set("n", "<leader>a.", function()
+	vim.cmd("lcd " .. vim.fn.expand("%:p:h"))
+	print("cwd -> " .. vim.fn.getcwd())
+end, { desc = "cd current" })
+
+vim.keymap.set("n", "<leader>a,", function()
+	vim.cmd("lcd " .. vim.fn.getcwd(-1, -1)) -- reset to global cwd, i.e. where nvim was launched
+end, { desc = "cd original" })
+
 -- CHAPTER: Running and Executing
 vim.keymap.set("n", "<leader>rv", function()
 	local cmd = "make -C build; and ./build/VulkanHelloWorld"

@@ -22,5 +22,11 @@
 		"scminput": false
 	},
 	"github.copilot.nextEditSuggestions.enabled": true, // FIX: Is it necessary?
-	"explorer.confirmDragAndDrop": false
+	"explorer.confirmDragAndDrop": false,
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"git.blame.editorDecoration.enabled": false,
+	"python.defaultInterpreterPath": "/home/ale/micromamba/envs/jax-notebook/bin/python",
+	"[python]": {
+		"editor.defaultFormatter": "ms-python.black-formatter"
+	}
 }

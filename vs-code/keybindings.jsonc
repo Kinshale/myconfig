@@ -66,8 +66,9 @@
 		"when": "notebookEditable && !editorTextFocus && activeEditor == 'workbench.editor.notebook'"
 	},
 	// ============================================
-	// CHAPTER: "Ctrl + /" for searching.
+	// CHAPTER: "Ctrl + /" for telescope.
 	// ============================================
+	// Unbind native line commenting to free up Ctrl+/ as a prefix key
 	{
 		"key": "ctrl+/",
 		"command": "-editor.action.commentLine",
@@ -83,110 +84,35 @@
 		"command": "-notebook.commentSelectedCells",
 		"when": "notebookEditable && notebookEditorFocused && !inputFocus"
 	},
+	// Native replacement
 	{
 		"key": "ctrl+/ f",
 		"command": "workbench.action.quickOpen"
 	},
 	{
 		"key": "ctrl+/ s",
-		"command": "workbench.action.gotoSymbol",
-		"when": "!accessibilityHelpIsShown && !accessibleViewIsShown"
+		"command": "workbench.action.gotoSymbol"
 	},
-	// ============================================
-	// CHAPTER: "Copilot keybinding" for searching.
-	// ============================================
+	// Telescope
 	{
-		"key": "ctrl+c",
-		"command": "inlineChat.start",
-		"when": "editorFocus && inlineChatHasEditsAgent && inlineChatPossible && !editorReadonly && !editorSimpleInput || editorFocus && inlineChatHasProvider && inlineChatPossible && !editorReadonly && !editorSimpleInput"
+		"key": "ctrl+/ /",
+		"command": "code-telescope.fuzzy.fileText"
 	},
 	{
-		"key": "ctrl+c",
-		"command": "inlineChat.startWithCurrentLine",
-		"when": "inlineChatHasProvider && inlineChatShowingHint && !editorReadonly && !inlineChatVisible"
+		"key": "ctrl+/ g",
+		"command": "code-telescope.fuzzy.wsText"
+	},
+	// {
+	// 	"key": "ctrl+/ s",
+	// 	"command": "code-telescope.fuzzy.documentSymbols"
+	// },
+	{
+		"key": "ctrl+/ shift+s",
+		"command": "code-telescope.fuzzy.wsSymbols"
 	},
 	{
-		"key": "ctrl+c",
-		"command": "inlineChat2.reveal",
-		"when": "inlineChatHasEditsAgent && !chatEdits.isGlobalEditingSession && chatEdits.requestCount >= 1"
-	},
-	{
-		"key": "ctrl+g",
-		"command": "-workbench.action.gotoLine"
-	},
-	{
-		"key": "ctrl+i",
-		"command": "-inlineChat2.reveal",
-		"when": "inlineChatHasEditsAgent && !chatEdits.isGlobalEditingSession && chatEdits.requestCount >= 1"
-	},
-	{
-		"key": "ctrl+i",
-		"command": "-inlineChat.start",
-		"when": "editorFocus && inlineChatHasEditsAgent && inlineChatPossible && !editorReadonly && !editorSimpleInput || editorFocus && inlineChatHasProvider && inlineChatPossible && !editorReadonly && !editorSimpleInput"
-	},
-	{
-		"key": "ctrl+i",
-		"command": "-inlineChat.startWithCurrentLine",
-		"when": "inlineChatHasProvider && inlineChatShowingHint && !editorReadonly && !inlineChatVisible"
-	},
-	{
-		"key": "ctrl+y",
-		"command": "-redo"
-	},
-	{
-		"key": "ctrl+y",
-		"command": "acceptSelectedCodeAction",
-		"when": "codeActionMenuVisible"
-	},
-	{
-		"key": "ctrl+y",
-		"command": "acceptSelectedSuggestion",
-		"when": "acceptSuggestionOnEnter && suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && suggestionMakesTextEdit && textInputFocus"
-	},
-	// Ctrl + y already accepts copilot changes
-	// Ctrl + x for rejecting copilot changes instead of ctrl + n.
-	// NOTE: Inline chat 2, is the "git-diff" alike AI mode where you prompt changes on the auxiliary bary. 
-	// NOTE: For inline-chat is the one you open with ctrl-i, and <Enter> or <Escape> for accepting / rejecting changes. It's kind of deprecated.
-	{
-		"key": "ctrl+x",
-		"command": "chatEditor.action.undoHunk",
-		"when": "chatEdits.hasEditorModifications && editorFocus && !chatEdits.isRequestInProgress || chatEdits.hasEditorModifications && notebookCellListFocused && !chatEdits.isRequestInProgress"
-	},
-	{
-		"key": "ctrl+shift+x",
-		"command": "chatEditor.action.reject",
-		"when": "chatEdits.hasEditorModifications && editorFocus && !chatEdits.isRequestInProgress || chatEdits.hasEditorModifications && notebookEditorFocused && !chatEdits.isRequestInProgress"
-	},
-	{
-		"key": "ctrl+shift+x",
-		"command": "inlineChat2.undo",
-		"when": "inlineChatHasEditsAgent && inlineChatVisible && !chatEdits.isRequestInProgress"
-	},
-	{
-		"key": "ctrl+n",
-		"command": "-chatEditor.action.undoHunk",
-		"when": "chatEdits.hasEditorModifications && editorFocus && !chatEdits.isRequestInProgress || chatEdits.hasEditorModifications && notebookCellListFocused && !chatEdits.isRequestInProgress"
-	},
-	{
-		"key": "ctrl+shift+n",
-		"command": "-chatEditor.action.reject",
-		"when": "chatEdits.hasEditorModifications && editorFocus && !chatEdits.isRequestInProgress || chatEdits.hasEditorModifications && notebookEditorFocused && !chatEdits.isRequestInProgress"
-	},
-	{
-		"key": "ctrl+shift+n",
-		"command": "-inlineChat2.undo",
-		"when": "inlineChatHasEditsAgent && inlineChatVisible && !chatEdits.isRequestInProgress"
-	},
-	// Next and previous edit
-	{
-		"key": "ctrl+n",
-		"command": "chatEditor.action.navigateNext",
-		"when": "chatEdits.hasEditorModifications && chatIsEnabled && editorFocus || chatEdits.hasEditorModifications && chatIsEnabled && notebookCellListFocused"
-	},
-	{
-		"key": "ctrl+p",
-		"command": "chatEditor.action.navigatePrevious",
-		"when": "chatEdits.hasEditorModifications && chatIsEnabled && editorFocus || chatEdits.hasEditorModifications && chatIsEnabled && notebookCellListFocused"
+		"key": "ctrl+/ r",
+		"command": "code-telescope.fuzzy.recentFiles"
 	},
 	// ============================================
 	// CHAPTER: JUPYTER NOTEBOOKS (List focus)
@@ -297,17 +223,36 @@
 		"command": "notebook.cell.changeToCode",
 		"when": "notebookEditorFocused && !inputFocus"
 	},
-	// TODO: Remove useless nvim ctrl + key bindings: (e.g. C-e, C-y, C-h, C-u,). I can reuse them in VS-code. 
+	// ============================================
+	// CHAPTER: Ctrl + key
+	// ============================================
+	// ctrl + y for accepting
 	{
 		"key": "ctrl+y",
-		"command": "-vscode-neovim.ctrl-y",
-		"when": "editorTextFocus && neovim.ctrlKeysNormal.y && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+		"command": "-redo"
 	},
 	{
 		"key": "ctrl+y",
-		"command": "-vscode-neovim.send",
-		"when": "editorTextFocus && neovim.ctrlKeysInsert.y && neovim.init && neovim.mode == 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+		"command": "acceptSelectedSuggestion",
+		"when": "acceptSuggestionOnEnter && suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && suggestionMakesTextEdit && textInputFocus"
 	},
+	// ctrl + i for jumping backwards jump list
+	{
+		"key": "ctrl+i",
+		"command": "-inlineChat2.reveal",
+		"when": "inlineChatHasEditsAgent && !chatEdits.isGlobalEditingSession && chatEdits.requestCount >= 1"
+	},
+	{
+		"key": "ctrl+i",
+		"command": "-inlineChat.start",
+		"when": "editorFocus && inlineChatHasEditsAgent && inlineChatPossible && !editorReadonly && !editorSimpleInput || editorFocus && inlineChatHasProvider && inlineChatPossible && !editorReadonly && !editorSimpleInput"
+	},
+	{
+		"key": "ctrl+i",
+		"command": "-inlineChat.startWithCurrentLine",
+		"when": "inlineChatHasProvider && inlineChatShowingHint && !editorReadonly && !inlineChatVisible"
+	},
+	// ctrl + e is just misleading
 	{
 		"key": "ctrl+e",
 		"command": "-workbench.action.quickOpen"
@@ -322,6 +267,7 @@
 		"command": "-vscode-neovim.send",
 		"when": "editorTextFocus && neovim.ctrlKeysInsert.e && neovim.init && neovim.mode == 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
 	},
+	// ctrl + x
 	{
 		"key": "ctrl+x",
 		"command": "-vscode-neovim.send",
@@ -331,16 +277,6 @@
 		"key": "ctrl+x",
 		"command": "-vscode-neovim.send",
 		"when": "editorTextFocus && neovim.ctrlKeysInsert.x && neovim.init && neovim.mode == 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
-	},
-	{
-		"key": "ctrl+i",
-		"command": "-vscode-neovim.send",
-		"when": "editorTextFocus && neovim.ctrlKeysNormal.i && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
-	},
-	{
-		"key": "ctrl+i",
-		"command": "-vscode-neovim.send",
-		"when": "editorTextFocus && neovim.ctrlKeysInsert.i && neovim.init && neovim.mode == 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
 	},
 	{
 		"key": "ctrl+z",

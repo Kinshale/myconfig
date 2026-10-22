@@ -13,15 +13,17 @@ return {
 			},
 			NOTE = {
 				color = "note",
-				alt = { "IDEA", "USE", "README" },
 			},
 			TODO = {
 				color = "todo",
-				alt = { "DOUBT, REVIEW" },
 			},
 			FIX = {
 				color = "fix",
-				alt = { "ERROR", "BUG" },
+				alt = { "FIXME" },
+			},
+			EXPLAIN = {
+				color = "explain",
+				alt = { "REVIEW" },
 			},
 			LINK = {
 				color = "link",
@@ -33,13 +35,15 @@ return {
 			note = { "#4BBF87" },
 			todo = { "#bb9af7" },
 			fix = { "#f7768e" },
+			explain = { "#cc99aa" },
 			link = { "#639BD0" },
 		},
 
 		-- CHAPTER:
 		-- NOTE:
 		-- TODO:
-		-- ERROR:
+		-- FIX:
+		-- EXPLAIN:
 		-- LINK:
 
 		highlight = {

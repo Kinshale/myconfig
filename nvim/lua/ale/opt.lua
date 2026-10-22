@@ -1,3 +1,10 @@
+vim.filetype.add({
+	extension = {
+		als = "alloy",
+		alloy = "alloy",
+	},
+})
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 

@@ -19,9 +19,9 @@ run  = "cd ~/Music/violoncello/"
 desc = "Go to violoncello"
 
 [[mgr.prepend_keymap]]
-on   = [ "g", "l" ]
-run  = "cd ~/Desktop/lyon-arduino/"
-desc = "Go to lyon course"
+on   = [ "g", "b" ]
+run  = "cd ~/Documents/burocrazia/"
+desc = "Go to burocrazia"
 
 # NOTE: o also unzips
 

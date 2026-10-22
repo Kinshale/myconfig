@@ -1,0 +1,24 @@
+name: dl-jax
+
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - ipykernel
+  - numpy
+  - matplotlib
+  - torchvision
+  - tqdm
+  - pandas
+  - pytorch
+  - scikit-learn
+  - pip:
+      - jax
+      - jax-resnet
+      - flax
+      - optax
+      - tensorflow 
+      - tensorflow-datasets
+      - better_exceptions
+      - caudex

@@ -1,0 +1,83 @@
+[
+	// ============================================
+	// CHAPTER: "Copilot keybinding" for searching.
+	// ============================================
+	{
+		"key": "ctrl+g",
+		"command": "-workbench.action.gotoLine"
+	},
+	{
+		"key": "ctrl+i",
+		"command": "-inlineChat2.reveal",
+		"when": "inlineChatHasEditsAgent && !chatEdits.isGlobalEditingSession && chatEdits.requestCount >= 1"
+	},
+	{
+		"key": "ctrl+i",
+		"command": "-inlineChat.start",
+		"when": "editorFocus && inlineChatHasEditsAgent && inlineChatPossible && !editorReadonly && !editorSimpleInput || editorFocus && inlineChatHasProvider && inlineChatPossible && !editorReadonly && !editorSimpleInput"
+	},
+	{
+		"key": "ctrl+i",
+		"command": "-inlineChat.startWithCurrentLine",
+		"when": "inlineChatHasProvider && inlineChatShowingHint && !editorReadonly && !inlineChatVisible"
+	},
+	{
+		"key": "ctrl+y",
+		"command": "-redo"
+	},
+	{
+		"key": "ctrl+y",
+		"command": "acceptSelectedCodeAction",
+		"when": "codeActionMenuVisible"
+	},
+	{
+		"key": "ctrl+y",
+		"command": "acceptSelectedSuggestion",
+		"when": "acceptSuggestionOnEnter && suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && suggestionMakesTextEdit && textInputFocus"
+	},
+	// Ctrl + y already accepts copilot changes
+	// Ctrl + x for rejecting copilot changes instead of ctrl + n.
+	// NOTE: Inline chat 2, is the "git-diff" alike AI mode where you prompt changes on the auxiliary bary. 
+	// NOTE: For inline-chat is the one you open with ctrl-i, and <Enter> or <Escape> for accepting / rejecting changes. It's kind of deprecated.
+	{
+		"key": "ctrl+x",
+		"command": "chatEditor.action.undoHunk",
+		"when": "chatEdits.hasEditorModifications && editorFocus && !chatEdits.isRequestInProgress || chatEdits.hasEditorModifications && notebookCellListFocused && !chatEdits.isRequestInProgress"
+	},
+	{
+		"key": "ctrl+shift+x",
+		"command": "chatEditor.action.reject",
+		"when": "chatEdits.hasEditorModifications && editorFocus && !chatEdits.isRequestInProgress || chatEdits.hasEditorModifications && notebookEditorFocused && !chatEdits.isRequestInProgress"
+	},
+	{
+		"key": "ctrl+shift+x",
+		"command": "inlineChat2.undo",
+		"when": "inlineChatHasEditsAgent && inlineChatVisible && !chatEdits.isRequestInProgress"
+	},
+	{
+		"key": "ctrl+n",
+		"command": "-chatEditor.action.undoHunk",
+		"when": "chatEdits.hasEditorModifications && editorFocus && !chatEdits.isRequestInProgress || chatEdits.hasEditorModifications && notebookCellListFocused && !chatEdits.isRequestInProgress"
+	},
+	{
+		"key": "ctrl+shift+n",
+		"command": "-chatEditor.action.reject",
+		"when": "chatEdits.hasEditorModifications && editorFocus && !chatEdits.isRequestInProgress || chatEdits.hasEditorModifications && notebookEditorFocused && !chatEdits.isRequestInProgress"
+	},
+	{
+		"key": "ctrl+shift+n",
+		"command": "-inlineChat2.undo",
+		"when": "inlineChatHasEditsAgent && inlineChatVisible && !chatEdits.isRequestInProgress"
+	},
+	// Next and previous edit
+	{
+		"key": "ctrl+n",
+		"command": "chatEditor.action.navigateNext",
+		"when": "chatEdits.hasEditorModifications && chatIsEnabled && editorFocus || chatEdits.hasEditorModifications && chatIsEnabled && notebookCellListFocused"
+	},
+	{
+		"key": "ctrl+p",
+		"command": "chatEditor.action.navigatePrevious",
+		"when": "chatEdits.hasEditorModifications && chatIsEnabled && editorFocus || chatEdits.hasEditorModifications && chatIsEnabled && notebookCellListFocused"
+	}
+]

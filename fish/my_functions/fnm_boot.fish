@@ -1,3 +1,5 @@
+# NOTE: fnm (Fast Node Manager) is a command-line tool used to install, manage, and switch between multiple versions of Node.js on a single machine.
+
 function fnm_boot
     # Check if fnm is already loaded (optional, but good practice)
     if not set -q FNM_MULTISHELL_ID

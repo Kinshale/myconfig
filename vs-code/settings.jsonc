@@ -28,5 +28,9 @@
 	"python.defaultInterpreterPath": "/home/ale/micromamba/envs/jax-notebook/bin/python",
 	"[python]": {
 		"editor.defaultFormatter": "ms-python.black-formatter"
-	}
+	},
+	"jupyter.widgetScriptSources": [
+		"jsdelivr.com",
+		"unpkg.com"
+	]
 }
